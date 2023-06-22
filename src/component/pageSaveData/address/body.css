@@ -1,0 +1,7 @@
+.Body {
+    /* background-color: darkslategray; */
+    max-width: 2500px;
+    border-radius: 20;
+    font-size: 30px;
+    height: 100vh;
+}
