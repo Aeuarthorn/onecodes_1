@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Select, Modal, Upload, Divider, Col, Row } from 'antd';
+import { Form, Select, Modal, Upload, Divider, Col, Row, Input, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import HoldBooks from './address/Hold_Books';
 import CloseFinances from './address/Close_Finances';
@@ -13,6 +13,8 @@ const getBase64 = (file) =>
     });
 
 function Drescription() {
+
+    const [open, setOpen] = useState(false);
     const [holds, setHolds] = useState(0);
 
     const handleChang = (value) => {
@@ -59,10 +61,13 @@ function Drescription() {
                 >
                     <Col className='gutter-row' span={4}>
                         <Form.Item style={styletext}>
-
+                            {/*  */}
                         </Form.Item>
                     </Col>
                     <Col className='gutter-row' span={4}>
+                        <Form.Item style={styletext}>
+                            {/*  */}
+                        </Form.Item>
 
                     </Col>
                     <Col className='gutter-row' span={3}>
@@ -75,6 +80,7 @@ function Drescription() {
                             name='select'
                             id='select'
                         >
+                            {/* input Form เลือกประเภทเล่ม */}
                             <Select
                                 defaultValue='เลือก'
                                 onChange={handleChang}
@@ -91,14 +97,6 @@ function Drescription() {
                             />
                         </Form.Item>
                     </Col>
-                    <Col className='gutter-row' span={4}>
-                        <Form.Item style={styletext}>
-
-                        </Form.Item>
-                    </Col>
-                    <Col className='gutter-row' span={4}>
-
-                    </Col>
                 </Row>
                 {/* หน้าฟอร์มในการเลือกประเภทเล่ม */}
                 <Row
@@ -106,8 +104,159 @@ function Drescription() {
                     justify="center"
                     gutter={32}
                 >
-                    {holds === 0 ? <HoldBooks /> : <CloseFinances />}
-                </Row>
+                    <Col className='gutter-row' span={19}>
+                        {holds === 0 ? <HoldBooks /> : <CloseFinances />}
+                    </Col>
+                    <Col className='gutter-row' span={5}>
+                        <Row
+                            align="left"
+                            justify="center"
+                            gutter={5}
+                        >
+                            <Col className='gutter-row' span={24}>
+                                <Form.Item >
+                                    <b>คนค้ำประกัน </b>
+                                </Form.Item>
+                            </Col>
+                            <Col className='gutter-row' span={8}>
+                                <Form.Item style={styletext}>
+                                    กลุ่มสินค้า :
+                                </Form.Item>
+                                <Form.Item style={styletext}>
+                                    รหัสสินค้า :
+                                </Form.Item>
+                                <Form.Item style={styletext}>
+                                    เลขที่บัตร :
+                                </Form.Item>
+                                <Form.Item style={styletext}>
+                                    วันเกิด :
+                                </Form.Item>
+                                <Form.Item style={styletext}>
+                                    เลขที่บัตร :
+                                </Form.Item>
+                                <Form.Item style={styletext}>
+                                    ที่อยู่ :
+                                </Form.Item>
+
+                            </Col>
+                            <Col className='gutter-row' span={16}>
+                                <Form.Item >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item >
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item >
+                                    {/* ปุ่มเพิ่มคนค้ำประกัน */}
+                                    <Button
+                                        type='primary'
+                                        defaultValue='เพิ่ม'
+                                        onClick={() => setOpen(true)}
+                                    >
+                                        เพิ่มข้อมูลคนค้ำประกัน
+                                    </Button>
+                                    <Modal
+                                        title='เพิ่มคนค้ำ'
+                                        centered
+                                        open={open}
+                                        onOk={() => setOpen(false)}
+                                        onCancel={() => setOpen(false)}
+                                    >
+                                        <Row
+                                            align='left'
+                                            justify='left'
+                                            gutter={32}
+                                        >
+                                            <Col className='gutter-row' span={6}>
+                                                <Form.Item style={styletext}>
+                                                    ชื่อสาขา :
+                                                </Form.Item>
+                                                <Form.Item style={styletext}>
+                                                    ชื่อ - นามสกุล :
+                                                </Form.Item>
+                                                <Form.Item style={styletext}>
+                                                    ความสัมพันธ์ :
+                                                </Form.Item>
+                                                <Form.Item style={styletext}>
+                                                    วันที่ :
+                                                </Form.Item>
+                                                <Form.Item style={styletext}>
+                                                    ที่อยู่ :
+                                                </Form.Item>
+                                                <Form.Item style={styletext}>
+                                                    เบอร์โทร :
+                                                </Form.Item>
+                                            </Col>
+                                            <Col className='gutter-row' span={18}>
+                                                <Form.Item >
+                                                    {/* input Form ชื่อสาขา */}
+                                                    <Select />
+                                                </Form.Item>
+                                                <Form.Item >
+                                                    {/* input Form ชื่อ - นามสกุล */}
+                                                    <Input />
+                                                </Form.Item>
+                                                <Form.Item >
+                                                    {/* input Form ความสัมพันธ์ */}
+                                                    <Select />
+                                                </Form.Item>
+                                                <Form.Item >
+                                                    {/* input Form วันที่ */}
+                                                    <Select />
+                                                </Form.Item>
+                                                <Form.Item >
+                                                    {/* input Form ที่อยู่ */}
+                                                    <Select />
+                                                </Form.Item>
+                                                <Form.Item >
+                                                    {/* input Form เบอร์โทร */}
+                                                    <Input />
+                                                </Form.Item>
+                                            </Col>
+
+                                        </Row>
+
+                                    </Modal>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        {/* <Row
+                            align="left"
+                            justify="center"
+                            gutter={5}
+                        >
+                            <Col className='gutter-row' span={24}>
+                                <Form.Item >
+                                    <b>คนค้ำประกัน</b>
+                                </Form.Item>
+                            </Col>
+                            <Col className='gutter-row' span={10}>
+                                <Form.Item >
+                                    คนค้ำประกัน
+                                </Form.Item>
+                            </Col>
+                            <Col className='gutter-row' span={14}>
+                                <Form.Item >
+                                    <Input />
+                                </Form.Item>
+                            </Col>
+                        </Row> */}
+                    </Col>
+
+
+                </Row >
 
                 <Form.Item style={{ marginBottom: 0 }}>
                     <Divider>หมวดรูปภาพ</Divider>
@@ -213,7 +362,7 @@ function Drescription() {
                         </Col>
                     </Row>
                 </Form.Item>
-            </Form>
+            </Form >
         </>
     )
 }
