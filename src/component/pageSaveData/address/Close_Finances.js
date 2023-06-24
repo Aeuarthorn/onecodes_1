@@ -12,10 +12,6 @@ function CloseFinances() {
     const onSearch = (value) => {
         console.log('search:', value);
     };
-    const style = {
-        // marginTop: '5px',
-        // width: '245px',
-    };
     const styletext = {
         textAlign: 'right'
     };
@@ -30,7 +26,7 @@ function CloseFinances() {
                 }}
             >
                 <div style={{ marginBottom: '10px', textAlign: 'left' }}>
-                    <b>รายละเอียดขอกู้</b>
+                    <b>รายละเอียดขอกู้เงินหน่อย</b>
                 </div>
                 <Row
                     align='left'

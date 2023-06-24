@@ -15,11 +15,7 @@ function HoldBooks() {
     const onSearch = (value) => {
         console.log('search:', value);
     };
-    const style = {
-        // marginTop: '5px',
-        // width: '245px',
-    };
-    const styletext = {
+     const styletext = {
         textAlign: 'right'
     };
 
