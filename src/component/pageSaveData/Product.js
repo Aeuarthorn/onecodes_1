@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Select, Modal, Upload } from 'antd';
+import { Col, Form, Input, Select, Modal, Upload, Divider, Row } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 
@@ -25,274 +25,271 @@ function Product() {
         setPreviewOpen(true);
         setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/')));
     };
+    const style = {
+        // marginTop: '5px',
+        // width: '245px',
+    };
+    const styletext = {
+        textAlign: 'right'
+    };
+
     return (
-        <React.Fragment>
-            <div className='text-center text-black mt-3 mb-3'>
-                <h5><b>สินค้า</b></h5>
-            </div>
+        <>
+            <Divider>
+                สินค้า
+            </Divider>
             <Form
-                name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                style={{
-                    maxHeight: '100vh',
-                }}
+                name='Product'
                 initialValues={{
                     remember: true,
                 }}
             >
-                <Form.Item
-                    style={{ marginBottom: 0 }}
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    <span style={{ lineHeight: '32px' }}>
-                        ประเภทลูกค้า :
-                    </span>
-                    <Form.Item style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}>
-                        {/* input Form ประเภทลูกค้า */}
-                        <Select
-                            style={{ marginLeft: '15px' }}
-                            name='customertype'
-                            id='customertype'
-                        />
-
-                    </Form.Item>
-                    <span>
-                        ประเภทสินค้า :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
-                        {/* input Form ประเภทสินค้า */}
-                        <Select style={{ marginLeft: '15px' }}
-                            name='proeducttype'
-                            id='proeducttype'
-                        />
-                    </Form.Item>
-                    <span>
-                        ยี่ห้อ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
-                        {/* input Form ยี่ห้อ */}
-                        <Select style={{ marginLeft: '15px' }}
-                            name='brand'
-                            id='brand'
-                        />
-                    </Form.Item>
-                </Form.Item>
-                <Form.Item
-                    style={{ marginBottom: 0 }}
-                >
-                    <span style={{ lineHeight: '32px' }}>
-                        รุ่น :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
-                        {/* input Form รุ่น */}
-                        <Select style={{ marginLeft: '15px' }}
+                    {/* column 1 */}
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            ประเภทลูกค้า :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            รุ่น :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            เลขทะเบียน :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            กลุ่มสินค้า :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            เลขไมค์ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            สถานะทะเบียน :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={5}>
+                        <Form.Item
+                            style={style}
+                            name='typepartner'
+                            id='typepartner'
+                        >
+                            {/* input Form ประเภทลูกค้า*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
                             name='model'
                             id='model'
-                        />
-                    </Form.Item>
-                    <span>
-                        ปี :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
-                        {/* input Form ปี */}
-                        <Select style={{ marginLeft: '15px' }}
-                            name='year'
-                            id='year'
-                        />
-                    </Form.Item>
-                    <span style={{ lineHeight: '32px', marginRight: '10px' }}>
-                        ราคา :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)' }}
-                        name='price'
-                        id='price'
-                    >
-                        {/* input Form ราคา */}
-                        <Input />
-                    </Form.Item><span style={{ marginLeft: '10px' }}>บาท</span>
-                </Form.Item>
-                <Form.Item
-                    style={{ marginBottom: 0 }}
-                >
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        เลขทะเบียน :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                        name='registrationnumber'
-                        id='registrationnumber'
-                    >
-                        {/* input Form เลขทะเบียน */}
-                        <Input style={{ marginLeft: '15px' }} />
-                    </Form.Item>
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        ประเภทรถ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                        name='cartype'
-                        id='cartype'
-                    >
-                        {/* input Form ประเภทรถ */}
-                        <Input style={{ marginLeft: '15px' }} />
-                    </Form.Item>
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        สีรถ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                        name='carcolor'
-                        id='carcolor'
-                    >
-                        {/* input Form สีรถ */}
-                        <Input style={{ marginLeft: '15px' }} />
-                    </Form.Item>
-                </Form.Item>
-                <Form.Item
-                    style={{ marginBottom: 0 }}
-                >
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        กลุ่มสินค้า :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
-                        {/* input Form กลุ่มสินค้า */}
-                        <Select style={{ marginLeft: '15px' }}
+                        >
+                            {/* input Form รุ่น*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='regisnumber'
+                            id='regisnumber'
+                        >
+                            {/* input Form เลขทะเบียน*/}
+                            <Input
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
                             name='productgroup'
                             id='productgroup'
-                        />
-                    </Form.Item>
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        เลขตัวถัง :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                        name='chassisnumber'
-                        id='chassisnumber'
-                    >
-                        {/* input Form เลขตัวถัง */}
-                        <Input style={{ marginLeft: '15px' }} />
-                    </Form.Item>
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        เลขเครื่อง :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                        name='machinenumber'
-                        id='machinenumber'
-                    >
-                        {/* input Form เลขเครื่อง */}
-                        <Input style={{ marginLeft: '15px' }} />
-                    </Form.Item>
-                </Form.Item>
-                <Form.Item
-                    style={{ marginBottom: 0 }}
-                >
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        เลขไมค์ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
-                        {/* input Form เลขไมค์ */}
-                        <Select style={{ marginLeft: '15px' }}
-                            name='mileage'
-                            id='mileage'
-                        />
-                    </Form.Item>
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        เลขกุญแจ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                        name='keynumber'
-                        id='keynumber'
-                    >
-                        {/* input Form เลขกุญแจ */}
-                        <Input style={{ marginLeft: '15px' }} />
-                    </Form.Item>
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        รหัสผู้รับรถ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
-                        {/* input Form รหัสผู้ใช้รถ */}
-                        <Select style={{ marginLeft: '15px' }}
-                            name='receivercode'
-                            id='receivercode'
-                        />
-                    </Form.Item>
-                </Form.Item>
-                <Form.Item
-                    style={{ marginBottom: 0 }}
-                >
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        สถานะทะเบียน :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
-                        {/* input Form สถานะทะเบียน */}
-                        <Select style={{ marginLeft: '15px' }}
-                            name='status'
-                            id='status'
-                        />
-                    </Form.Item>
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                        ที่เก็บ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                        name='storage'
-                        id='storage'
-                    >
-                        {/* input Form ที่เก็บ */}
-                        <Input style={{ marginLeft: '15px' }} />
-                    </Form.Item>
-                    <span
-                        style={{ lineHeight: '32px' }}
-                    >
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', marginRight: '30px' }}
-                    >
+                        >
+                            {/* input Form กลุ่มสินค้า*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='mikenumber'
+                            id='mikenumber'
+                        >
+                            {/* input Form เลขไมค์*/}
+                            <Input
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='recordstatus'
+                            id='recordstatus'
+                        >
+                            {/* input Form สถานะทะเบียน*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                    </Col>
+                    {/* column 2 */}
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            ประเภทลูกค้า :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ปี :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ประเภทรถ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            เลขตัวถัง :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            เลขกุญแจ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ที่เก็บ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={5}>
+                        <Form.Item
+                            style={style}
+                            name='typeproduct'
+                            id='typeproduct'
+                        >
+                            {/* input Form ประเภทสินค้า*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='year'
+                            id='year'
+                        >
+                            {/* input Form ปี*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='typecar'
+                            id='typecar'
+                        >
+                            {/* input Form ประเภทรถ*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='classisnumber'
+                            id='classisnumber'
+                        >
+                            {/* input Form เลขตัวถัง*/}
+                            <Input
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='keynumber'
+                            id='keynumber'
+                        >
+                            {/* input Form เลขกุญแจ*/}
+                            <Input
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='storage'
+                            id='storage'
+                        >
+                            {/* input Form ที่เก็บ*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                    </Col>
+                    {/* column 3 */}
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            ยี่ห้อ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ราคา :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            สีรถ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            เลขเครื่อง :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            รหัสผู้รับรถ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={5}>
+                        <Form.Item
+                            style={style}
+                            name='brand'
+                            id='brand'
+                        >
+                            {/* input Form ยี่ห้อ*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='price'
+                            id='price'
+                        >
+                            {/* input Form ราคา*/}
+                            <Input
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='carpaint'
+                            id='carpaint'
+                        >
+                            {/* input Form สีรถ*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='machinenumber'
+                            id='machinenumber'
+                        >
+                            {/* input Form เลขเครื่อง*/}
+                            <Input
+                            // options={career}
+                            />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='reseivercode'
+                            id='reseivercode'
+                        >
+                            {/* input Form รหัสผู้รับรถ*/}
+                            <Select
+                            // options={career}
+                            />
+                        </Form.Item>
+                    </Col>
 
-                    </Form.Item>
-                </Form.Item>
+
+                </Row>
+            </Form>
+            <Form>
                 <Form.Item
                     style={{ marginBottom: 0 }}
                 >
@@ -329,9 +326,8 @@ function Product() {
                         </Modal>
                     </Form.Item>
                 </Form.Item>
-
             </Form>
-        </React.Fragment>
+        </>
     )
 }
 export default Product

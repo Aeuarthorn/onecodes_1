@@ -1,12 +1,12 @@
 import React from 'react'
-import { Container } from '@mui/material'
+import { Divider } from 'antd'
 
 function Home() {
     return (
-        <Container>
-            <h1 className='text-center'>หน้าหลัก</h1>
-            lfgdf
-        </Container>
+        <>
+            <Divider className='text-center'><h1>หน้าหลัก</h1></Divider>
+            รอดำเนินการสักครู่...
+        </>
 
     )
 }

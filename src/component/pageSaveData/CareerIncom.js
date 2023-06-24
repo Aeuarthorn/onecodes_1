@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Form, Select } from 'antd';
+import { Col, Divider, Form, Row, Select } from 'antd';
 import AddressCurr from './address/AddressCurrent';
 import AddressID from './address/AddressID';
 import AddressWork from './address/AddressWork';
@@ -87,131 +87,120 @@ function CareerIncome() {
     const onChange = (value) => {
         setCareer(value);
     }
+    const style = {
+        // marginTop: '5px',
+        // width: '245px',
+    };
+    const styletext = {
+        textAlign: 'right'
+    };
+
     return (
-        <React.Fragment>
-            <div className='text-center text-black mt-3 mb-3'>
-                <h5><b>อาชีพ</b></h5>
-            </div>
+        <>
+            <Divider>
+                อาชีพ
+            </Divider>
             <Form
-                name='basic'
-                // labelCol={{
-                //     span: 8,
-                // }}
-                style={{
-                    marginBottom: 10,
-                }}
+                name='Career'
                 initialValues={{
                     remember: true,
                 }}
             >
-
-                <Form.Item
-                    name="career"
-                    id='career'
-                    label="อาชีพ"
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        marginRight: 20,
-                        // width: 'calc(500px)',
-                    }}
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    <Select
-                        options={career}
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(200px)',
-                            textAlign: 'center'
-                        }}
-                    />
-                </Form.Item>
-                <Form.Item
-                    name="typebusi"
-                    id="typebusi"
-                    label="ประเภทธุรกิจ"
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        marginLeft: 20,
-                        // width: 'calc(500px)',
-                    }}
-                >
-                    <Select
-                        options={career}
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(200px)',
-                            textAlign: 'center'
-                        }}
-                    />
-                </Form.Item>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item style={styletext}>
+                            อาชีพ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            style={style}
+                            name='career'
+                            id='career'
+                        >
+                            {/* input Form อาชีพ*/}
+                            <Select
+                                options={career}
+                            />
+                        </Form.Item>
 
-                <Form.Item
-                    name="address"
-                    id="address"
-                    label="ที่อยู่"
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        marginLeft: 20,
-                        // width: 'calc(500px)',
-                    }}
-                >
-                    <Select
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(200px)',
-                            textAlign: 'center',
-                        }}
-                        defaultValue={'สถานที่ทำงาน'}
-                        onChange={onChange}
-                        options={[
-                            {
-                                label: 'ตามบัตรประชาชน',
-                                value: 0,
-                            },
-                            {
-                                label: 'ตามทะเบียนบ้าน',
-                                value: 1,
-                            },
-                            {
-                                label: 'ตามสถานที่ทำงาน',
-                                value: 2,
-                            },
-                            {
-                                label: 'ตามที่อยู่อื่น ๆ',
-                                value: 3,
-                            },
-                        ]}
-                    />
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            ประเภทธุรกิจ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            style={style}
+                            name='typeBu'
+                            id='typeBu'
+                        >
+                            {/* input Form ประเภทธุรกิจ*/}
+                            <Select
+                                options={career}
+                            />
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={2}>
+                        <Form.Item style={styletext}>
+                            ที่อยู่ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form เลือกที่ทอยู่*/}
+                            <Select
+                                style={{
+                                    lineHeight: '32px',
+                                    width: 'calc(200px)',
+                                    textAlign: 'center',
+                                }}
+                                defaultValue={'สถานที่ทำงาน'}
+                                onChange={onChange}
+                                options={[
+                                    {
+                                        label: 'ตามบัตรประชาชน',
+                                        value: 0,
+                                    },
+                                    {
+                                        label: 'ตามทะเบียนบ้าน',
+                                        value: 1,
+                                    },
+                                    {
+                                        label: 'ตามสถานที่ทำงาน',
+                                        value: 2,
+                                    },
+                                    {
+                                        label: 'ตามที่อยู่อื่น ๆ',
+                                        value: 3,
+                                    },
+                                ]}
+                            />
+                        </Form.Item>
+                    </Col>
 
-                </Form.Item>
+
+                </Row>
                 <Form
                     style={{ marginTop: 15 }}>
-
                     {careerin === 0 && (<AddressID />)}
                     {careerin === 1 && (<AddressCurr />)}
                     {careerin === 2 && (<AddressWork />)}
                     {careerin === 3 && (<AddressOther />)}
 
                 </Form>
-
-
-                {/* ฟอร์มสำหรับข้อมูลตามบัตรประชาชน */}
-                {/* ฟอร์มสำหรับข้อมูลตามที่อยู่ทะเบียนบ้าน */}
-
             </Form>
-
-        </React.Fragment>
+            <Divider></Divider>
+        </>
     )
 }
 export default CareerIncome

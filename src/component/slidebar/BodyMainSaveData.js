@@ -120,40 +120,40 @@ const BodyMainSaveData = () => {
                 >
                     {steps[current].contant}
                 </div>
-                {/* ปุ่มกด */}
-                <div
-                    style={{
-                        marginTop: 24,
-                        marginBottom: 15,
-                    }}
-                    className='text-center'
-                >
-                    {current > 0 && (
-                        <Button
-                            style={{
-                                margin: '8px',
-                                background: '#d9d9d9',
-                                // fontSize: '30px'
-                            }}
-                            onClick={() => prev()}
-                        >
-                            ย้อนกลับ
-                        </Button>
-                    )}
-                    {current === steps.length - 1 && (
-                        <Button type="primary" onClick={() => message.success('Processing complete!')}>
-                            บันทึก
-                        </Button>
-                    )}
-
-                    {current < steps.length - 1 && (
-                        <Button type="primary" onClick={() => next()}
-                        >
-                            ต่อไป
-                        </Button>
-                    )}
-                </div>
             </Container>
+            {/* ปุ่มกด */}
+            <div
+                style={{
+                    marginTop: 24,
+                    marginBottom: 15,
+                }}
+                className='text-center'
+            >
+                {current > 0 && (
+                    <Button
+                        style={{
+                            margin: '8px',
+                            background: '#d9d9d9',
+                            // fontSize: '30px'
+                        }}
+                        onClick={() => prev()}
+                    >
+                        ย้อนกลับ
+                    </Button>
+                )}
+                {current === steps.length - 1 && (
+                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                        บันทึก
+                    </Button>
+                )}
+
+                {current < steps.length - 1 && (
+                    <Button type="primary" onClick={() => next()}
+                    >
+                        ต่อไป
+                    </Button>
+                )}
+            </div>
         </>
     )
 }

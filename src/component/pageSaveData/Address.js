@@ -13,17 +13,11 @@ function Address() {
 
     return (
         <>
-            <div className='text-center text-black mt-3 mb-3'>
-                <h5><b>ที่อยู่ตามทะเบียนบ้าน</b></h5>
-            </div>
+            <Divider >
+                ที่อยู่ตามทะเบียนบ้าน
+            </Divider>
             <Form
-                name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                style={{
-                    maxWidth: '100vh',
-                }}
+                name='Address'
                 initialValues={{
                     remember: true,
                 }}
@@ -57,11 +51,11 @@ function Address() {
                 </Form.Item>
                 {/* ฟอร์มสำหรับข้อมูลตามบัตรประชาชน */}
                 {/* ฟอร์มสำหรับข้อมูลตามที่อยู่ทะเบียนบ้าน */}
-                <Divider>
+                <Form>
                     {checkAddress === 0 ? <AddressID /> : <AddressCurr />}
-                </Divider>
+                </Form>
             </Form>
-
+            <Divider></Divider>
         </>
     )
 }

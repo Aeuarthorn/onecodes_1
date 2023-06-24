@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../address/body.css'
-import { Form, Input, Select } from 'antd';
+import { Form, Input, Select, Row, Col } from 'antd';
 import district from '../data/District';
 import { Option } from 'antd/es/mentions';
 import district1 from '../data/District1';
@@ -16,184 +16,113 @@ function AddressID() {
     const onSearch = (value) => {
         console.log('search:', value);
     };
+    const style = {
+        // marginTop: '5px',
+        // width: '245px',
+    };
+    const styletext = {
+        textAlign: 'right'
+    };
 
     return (
-        <div>
+        <>
             <Form
-                name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                style={{
-                    maxWidth: '100vh',
-                }}
+                name='AddressID'
                 initialValues={{
                     remember: true,
                 }}
             >
-                <Form>
-                    {/* ฟอร์มสำหรับข้อมูลตามบัตรประชาชน */}
-                    <Form
-                        name='basic'
-                        labelCol={{
-                            span: 8,
-                        }}
-                        style={{
-                            maxWidth: '100vh',
-                        }}
-                        initialValues={{
-                            remember: true,
-                        }}
-                    >
+                <Row align="left"
+                    justify="left"
+                    gutter={
+                        32
+                    }
+                >
+                    <Col className='gutter-row' span={6}>
+                        <Form.Item style={styletext}>
+                            บ้านเลขที่ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ซอย :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            หมู่บ้าน / อาคาร :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            อำเภอ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            รหัสไปรษณีย์ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={5}>
                         <Form.Item
-                            label='เลขที่'
-                            style={{
-                                marginBottom: 0,
-                            }}
+                            style={style}
+                            name='cardID'
+                            id='cardID'
                         >
-                            <Form.Item
-                                style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '25px' }}
-                            >
-                                {/* input Form บ้านเลขที่ */}
-                                <Input name='number' id='number' />
-                            </Form.Item>
-                            <span
-                                style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                            >
-                                หมู่ที่ :
-                            </span>
-                            <Form.Item style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '12px' }}>
-                                {/* input Form หมู่ที่ */}
-                                <Input name='group' id='group' />
-                            </Form.Item>
+                            {/* input Form บ้านเลขที่*/}
+                            <Input />
                         </Form.Item>
                         <Form.Item
-                            label='ซอย'
-                            style={{
-                                marginBottom: 0,
-                            }}
+                            style={style}
+                            name='cardID'
+                            id='cardID'
                         >
-                            <Form.Item
-                                style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '25px' }}
-                            >
-                                {/* input Form ซอย */}
-                                <Input name='alley' id='alley' />
-                            </Form.Item>
-                            <span
-                                style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                            >
-                                ถนน :
-                            </span>
-                            <Form.Item style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '12px' }}>
-                                {/* ม input Fomr ถนน */}
-                                <Input name='road' id='road' />
-                            </Form.Item>
+                            {/* input Form ซอย*/}
+                            <Input />
                         </Form.Item>
                         <Form.Item
-                            label='หมู่บ้าน / อาคาร'
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form วันหมดอายุบัตร*/}
+                            <Input />
+                        </Form.Item>
 
-                            style={{ marginBottom: 0 }}
-                        >
-                            <Form.Item
-                                style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '25px' }}
-                            >
-                                {/* input Form หมู่บ้าน / อาคาร */}
-                                <Input name='group1' id='group1' />
-                            </Form.Item>
-                            <span
-                                style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                            >
-                                ตำบล :
-                                {/* input Form ตำบล */}
-                                <Select
-                                    name='distric'
-                                    id='distric'
-                                    placeholder="เลือกอำเภอ"
-                                    // optionFilterProp="children"
-                                    onChange={onChange}
-                                    onSearch={onSearch}
-                                    filterOption={(input, option) =>
-                                        (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                                    }
-                                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '12px', textAlign: 'left' }}
-                                >{/* รอ map กับ data */}
-                                    {district.map((item) => (
-                                        <Option key={item.district}>
-                                            {item.value}
-                                        </Option>
-                                    ))}
-                                </Select>
-                            </span>
-                        </Form.Item>
                         <Form.Item
-                            label='อำเภอ'
+                            style={style}
+                            name='cardID'
+                            id='cardID'
                         >
-                            <span
-                                style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                            >
-                                {/* input Form อำเภอ */}
-                                <Select
-                                    // showSearch
-                                    name='distric1'
-                                    id='distric1'
-                                    placeholder="เลือกอำเภอ"
-                                    // optionFilterProp="children"
-                                    onChange={onChange}
-                                    onSearch={onSearch}
-                                    filterOption={(input, option) =>
-                                        (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                                    }
-                                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '25px', textAlign: 'left' }}
-                                >
-                                    {district1.map((item) => (
-                                        <Option key={item.district1}>
-                                            {item.value}
-                                        </Option>
-                                    ))}
-                                </Select>
-                            </span>
-                            <span
-                                style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                            >
-                                จังหวัด :
-                                {/* input Form  จังหวัด */}
-                                <Select
-                                    name='province'
-                                    id='province'
-                                    // showSearch
-                                    placeholder="เลือกจังหวัด"
-                                    // optionFilterProp="children"
-                                    onChange={onChange}
-                                    onSearch={onSearch}
-                                    filterOption={(input, option) =>
-                                        (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                                    }
-                                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '12px', textAlign: 'left' }}
-                                >
-                                    {province.map((item) => (
-                                        <Option key={item.province}>
-                                            {item.value}
-                                        </Option>
-                                    ))}
-                                </Select>
-                            </span>
-                        </Form.Item>
-                        <Form.Item
-                            label='รหัสไปรษณีย์'
-                        >
-                            {/* input Form รหัสไปรษณีย์ */}
+                            {/* input Form อำเภอ*/}
                             <Select
-                                name='zipcode'
-                                id='zipcode'
+                                name='distric1'
+                                id='distric1'
                                 showSearch
-                                placeholder="รหัสไปรษณีย์"
+                                placeholder="เลือกอำเภอ"
                                 optionFilterProp="children"
                                 onChange={onChange}
                                 onSearch={onSearch}
                                 filterOption={(input, option) =>
                                     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                 }
-                                style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '50px', textAlign: 'left' }}
+                            >
+                                {district1.map((item) => (
+                                    <Option key={item.district1}>
+                                        {item.value}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form รหัสไปรษณีย์*/}
+                            <Select
+                                name='zipcode'
+                                id='zipcode'
+                                showSearch
+                                placeholder="เลือกรหัสไปรษณีย์"
+                                optionFilterProp="children"
+                                onChange={onChange}
+                                onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                }
                             >
                                 {zipcode.map((item) => (
                                     <Option key={item.zipcode}>
@@ -201,21 +130,99 @@ function AddressID() {
                                     </Option>
                                 ))}
                             </Select>
-                            <span
-                                style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                            >
-                                <Form.Item
-                                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '12px', textAlign: 'left' }}
-                                >
-                                </Form.Item>
-                            </span>
                         </Form.Item>
-                    </Form>
 
-                </Form>
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            หมู่ที่ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ถนน :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ตำบล :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            จังหวัด :
+                        </Form.Item>
+
+                    </Col>
+                    <Col className='gutter-row' span={5}>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form หมู่ที่*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form ถนน*/}
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form ตำบล*/}
+                            <Select
+                                name='distric'
+                                id='distric'
+                                showSearch
+                                placeholder="เลือกตำบล"
+                                optionFilterProp="children"
+                                onChange={onChange}
+                                onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                }
+                            >
+                                {district.map((item) => (
+                                    <Option key={item.district}>
+                                        {item.value}
+                                    </Option>
+                                ))}
+
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form จังหวัด*/}
+                            <Select
+                                name='province'
+                                id='province'
+
+                                showSearch
+                                placeholder="เลือกจังหวัด"
+                                optionFilterProp="children"
+                                onChange={onChange}
+                                onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                }
+                            >
+                                {province.map((item) => (
+                                    <Option key={item.province}>
+                                        {item.value}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                    </Col>
+                </Row>
             </Form>
 
-        </div>
+        </>
     )
 }
 export default AddressID

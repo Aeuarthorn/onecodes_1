@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Form, Select } from 'antd';
+import { Form, Select, Divider } from 'antd';
 import AddressID from './address/AddressID';
 import AddressCurr from './address/AddressCurrent';
 import AddressWork from './address/AddressWork';
@@ -15,18 +15,12 @@ function AddressCur() {
     }
 
     return (
-        <React.Fragment>
-            <div className='text-center text-black mt-3 mb-3'>
-                <h5><b>ที่อยู่ปัจจุบัน</b></h5>
-            </div>
+        <>
+            <Divider>
+                ที่อยู่ตามทะเบียนบ้าน
+            </Divider>
             <Form
                 name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                // style={{
-                //     maxWidth: '100vh',
-                // }}
                 initialValues={{
                     remember: true,
                 }}
@@ -73,8 +67,10 @@ function AddressCur() {
                 {checkAddress === 2 && (<AddressWork />)}
                 {checkAddress === 3 && (<AddressOther />)}
             </Form>
+            <Divider>
 
-        </React.Fragment>
+            </Divider>
+        </>
     )
 }
 export default AddressCur

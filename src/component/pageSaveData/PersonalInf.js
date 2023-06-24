@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { DatePicker, Form, Input, Select, Modal, Upload } from 'antd';
+import { DatePicker, Form, Input, Select, Modal, Upload, Row, Col, Divider } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import district from './data/District';
 import { Option } from 'antd/es/mentions';
 import district1 from './data/District1';
 import province from './data/Province';
 import zipcode from './data/ZipCode';
-// import { Container } from 'react-bootstrap';
+import './page.css'
 
 const getBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -36,294 +36,289 @@ function Personal_Inf() {
         setPreviewOpen(true);
         setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/')));
     };
+
+    const style = {
+        // marginTop: '5px',
+        // width: '245px',
+    };
+    const styletext = {
+        textAlign: 'right'
+    };
+
     return (
-        <div>
-            <div className='text-center text-black mt-3 mb-3'>
-                <h5><b>ข้อมูลส่วนตัว</b></h5>
-            </div>
-
+        <>
+            <Divider >
+                ข้อมูลส่วนตัว
+            </Divider>
             <Form
-                name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                style={{
-                    maxWidth: '100vh',
-                    marginTop: 10,
-                }}
+                name='PersonalInf'
+
                 initialValues={{
                     remember: true,
                 }}
             >
-
-                <span style={{ display: 'inline-block', lineHeight: '130px', marginRight: '10px' }}>
-                    เลขบัตรประจำตัวประชาชน :
-                </span>
-                <Form.Item
-                    style={{ display: 'inline-block', lineHeight: '130px', width: 'calc(250px)', textAlign: 'center' }}
-                    name='cardID'
-                    id='cardID'
+                <Row align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    {/* input Form เลขบัตรประจำตัวประชาชน*/}
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
-                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)' }}
-                    name="avatar"
-                    id='avatar'
-                >
-                    {/* input Form เพิ่มรูปภาพ */}
-                    <Upload
-                        listType="picture-card"
-                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                        onPreview={handlePreview}
-                    >
-                        {/* {fileList.length >= 8 ? null : uploadButton} */}
-                        <div style={{ marginBottom: 0 }}>
-                            <PlusOutlined /><p />
-                            รูปภาพ
-                        </div>
-                    </Upload>
-                    {/* ดูภาพที่อัพโหลดมา */}
-                    <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-                        <img
-                            alt="example"
-                            style={{
-                                width: '100%',
-                            }}
-                            src={previewImage}
-                        />
-                    </Modal>
-                </Form.Item>
-                <Form.Item
-                    label='ชื่อ'
-                    rules={[{ required: true, message: 'Please input your Name' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '25px' }}
-                        name='name'
-                        id='name'
-                    >
-                        {/* input Form ชื่อ - นามสกุล*/}
-                        <Input />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                    >
-                        ศาสนา :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '12px' }}
-                        name='religion'
-                        id='religion'
-                    >
-                        {/* input Form ศาสนา*/}
-                        <Input />
-                    </Form.Item>
-                </Form.Item>
-                <Form.Item
-                    label='วันหมดอายุ'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <Form.Item
-                        style={{ display: 'inline-block', marginRight: '30px', marginLeft: '10px' }}
-                        name='date'
-                        id='date'
-                    >
-                        {/* input Form */}
-                        <DatePicker style={{ width: 'calc(200px)' }} />
-                    </Form.Item>
-                    <span
-                        style={{ width: '20px', lineHeight: '32px', textAlign: 'center' }}
-                    >
-                        วัน / เดือน / ปีเกิด :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block' }}
-                        name='brithday'
-                        id='drithday'
-                    >
-                        {/* input Form วัน เดือน ปีเกิด*/}
-                        <DatePicker style={{ width: 'calc(200px)', marginRight: '30px', marginLeft: '15px' }} />
-                    </Form.Item>
-                </Form.Item>
-            </Form>
-            <Form
-                name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                style={{
-                    maxWidth: '100vh',
-                }}
-                initialValues={{
-                    remember: true,
-                }}
-            >
-                {/* การใช้ span ทำให้อยู่ใน col เดียวกัน */}
-                <Form.Item
-                    label='เลขที่'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '15px' }}
-                        name='number'
-                        id='number'
-                    >
-                        {/* input Form บ้านเลขที่*/}
-                        <Input />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                    >
-                        ถนน :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '15px' }}
-                        name='road'
-                        id='road'
-                    >
-                        {/* input Form ถนน*/}
-                        <Input />
-                    </Form.Item>
-                </Form.Item>
-                <Form.Item
-                    label='หมู่ที่'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{ lineHeight: '32px', marginBottom: 0 }}
-                >
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '15px' }}
-                        name='group'
-                        id='group'
-                    >
-                        {/* input Form หมู่*/}
-                        <Input />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}                                           >
-                        ตำบล :
-                        {/* input Form ตำบล*/}
-                        <Select
-                            name='distric'
-                            id='distric'
-                            showSearch
-                            placeholder="Select a district"
-                            optionFilterProp="children"
-                            onChange={onChange}
-                            onSearch={onSearch}
-                            filterOption={(input, option) =>
-                                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                            }
-                            style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '15px', textAlign: 'left' }}
-                        >
-                            {district.map((item) => (
-                                <Option key={item.district}>
-                                    {item.value}
-                                </Option>
-                            ))}
-                        </Select>
-                    </span>
-                </Form.Item>
-
-                <Form.Item
-                    label='อำเภอ'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}                                  >
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                    >
-                        {/* input Form อำเภอ */}
-                        <Select
-                            name='distric1'
-                            id='distric1'
-                            showSearch
-                            placeholder="Select a district1"
-                            optionFilterProp="children"
-                            onChange={onChange}
-                            onSearch={onSearch}
-                            filterOption={(input, option) =>
-                                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                            }
-                            style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginRight: '15px', textAlign: 'left' }}
-                        >
-                            {district1.map((item) => (
-                                <Option key={item.district1}>
-                                    {item.value}
-                                </Option>
-                            ))}
-                        </Select>
-                    </span>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                    >
-                        จังหวัด :
-                        {/* input Form จังหวัด */}
-                        <Select
-                            name='province'
-                            id='province'
-                            showSearch
-                            placeholder="Select a province"
-                            optionFilterProp="children"
-                            onChange={onChange}
-                            onSearch={onSearch}
-                            filterOption={(input, option) =>
-                                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                            }
-                            style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '15px', textAlign: 'left' }}
-                        >
-                            {province.map((item) => (
-                                <Option key={item.province}>
-                                    {item.value}
-                                </Option>
-                            ))}
-                        </Select>
-                    </span>
-                </Form.Item>
-                <Form.Item
-                    label='รหัสไปรษณีย์'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                >
-                    {/* input Form รหัสไปรษณีย์ */}
-                    <Select
-                        name='zipcode'
-                        id='zipcode'
-                        showSearch
-                        placeholder="Select a zipcode"
-                        optionFilterProp="children"
-                        onChange={onChange}
-                        onSearch={onSearch}
-                        filterOption={(input, option) =>
-                            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                        }
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '15px', textAlign: 'left' }}
-                    >
-                        {zipcode.map((item) => (
-                            <Option key={item.zipcode}>
-                                {item.value}
-                            </Option>
-                        ))}
-                    </Select>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center' }}
-                    >
-                        <Form.Item
-                            style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(250px)', marginLeft: '90px', textAlign: 'left' }}
-                        >
+                    <Col className='gutter-row' span={6}>
+                        <Form.Item style={styletext}>
+                            เลขบัตรประจำตัวประชาชน :
                         </Form.Item>
-                    </span>
-                </Form.Item>
+                        <Form.Item style={styletext}>
+                            ชื่อ - นามสกุล :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            วัยหมดอายุบัตร :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            บ้านเลขที่ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            หมู่ที่ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            อำเภอ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            รหัสไปรษณีย์ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={5}>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form เลขบัตรประจำตัวประชาชน*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form ชื่อ - นามสกุล*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form วันหมดอายุบัตร*/}
+                            <DatePicker />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form บ้านเลขที่*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form หมู่ที่*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form อำเภอ*/}
+                            <Select
+                                name='distric1'
+                                id='distric1'
+                                showSearch
+                                placeholder="เลือกอำเภอ"
+                                optionFilterProp="children"
+                                onChange={onChange}
+                                onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                }
+                            >
+                                {district1.map((item) => (
+                                    <Option key={item.district1}>
+                                        {item.value}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form รหัสไปรษณีย์*/}
+                            <Select
+                                name='zipcode'
+                                id='zipcode'
+                                showSearch
+                                placeholder="เลือกรหัสไปรษณีย์"
+                                optionFilterProp="children"
+                                onChange={onChange}
+                                onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                }
+                            >
+                                {zipcode.map((item) => (
+                                    <Option key={item.zipcode}>
+                                        {item.value}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            Name - LastName :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ศาสนา :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            วัน / เดือน / ปีเกิด :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ถนน :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ตำบล :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            จังหวัด :
+                        </Form.Item>
+
+                    </Col>
+                    <Col className='gutter-row' span={5}>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form ชื่อ - นามสกุล ภาษาอังกฤษ*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form ศาสนา*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form วัน / เดือน / ปีเกิด*/}
+                            <DatePicker />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form ถนน*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form ตำบล*/}
+                            <Select
+                                name='distric'
+                                id='distric'
+                                showSearch
+                                placeholder="เลือกตำบล"
+                                optionFilterProp="children"
+                                onChange={onChange}
+                                onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                }
+                            >
+                                {district.map((item) => (
+                                    <Option key={item.district}>
+                                        {item.value}
+                                    </Option>
+                                ))}
+
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            style={style}
+                            name='cardID'
+                            id='cardID'
+                        >
+                            {/* input Form จังหวัด*/}
+                            <Select
+                                name='province'
+                                id='province'
+
+                                showSearch
+                                placeholder="เลือกจังหวัด"
+                                optionFilterProp="children"
+                                onChange={onChange}
+                                onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                }
+                            >
+                                {province.map((item) => (
+                                    <Option key={item.province}>
+                                        {item.value}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                    </Col>
+                    <Col align="top" span={5}>
+                        <Form
+                            style={style}
+                            value={100}
+                            name="avatar"
+                            id='avatar'
+                        >
+                            {/* input Form เพิ่มรูปภาพ */}
+                            <Upload
+                                listType="picture-card"
+                                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                onPreview={handlePreview}
+                            >
+                                {/* {fileList.length >= 8 ? null : uploadButton} */}
+                                <div value={100}>
+                                    <PlusOutlined /><p />
+                                    รูปภาพ
+                                </div>
+                            </Upload>
+                            {/* ดูภาพที่อัพโหลดมา */}
+                            <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+                                <img
+                                    alt="example"
+                                    style={{
+                                        width: '100%',
+                                    }}
+                                    src={previewImage}
+                                />
+                            </Modal>
+                        </Form>
+                    </Col>
+                    <Divider></Divider>
+                </Row>
             </Form>
-        </div>
+        </>
     );
 }
 

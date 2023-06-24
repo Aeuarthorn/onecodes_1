@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './address/body.css'
 import { MinusCircleOutlined, PlusOutlined, CheckCircleOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Select, Space } from 'antd';
+import { Button, Form, Input, Select, Space, Divider, Row, Col } from 'antd';
 const { Option } = Select;
 
 const tell = [{
@@ -78,712 +78,736 @@ function Contract() {
             teller: [],
         });
     };
+    const style = {
+        // marginTop: '5px',
+        // width: '245px',
+        textAlign: 'left'
+    };
+    const styletext = {
+        textAlign: 'right'
+    };
+
 
     return (
-        <React.Fragment>
-            <div style={{ marginTop: 5 }}>
-                <h5><b>ช่องทางการติดต่อ</b></h5>
-            </div>
+        <>
+            <Divider>
+                ช่องทางการติดต่อ
+            </Divider>
             {/* Form ใหม่ */}
             <Form
-                form={form}
-                name='dynamic_form_complex'
-                labelCol={{ span: 8, }}
-                style={{
-                    marginBottom: 5,
+                name='basic'
+                initialValues={{
+                    remember: true,
                 }}
-                initialValues={{ remember: true, }}
-                onFinish={onFinish}
-                autoComplete="off"
             >
-                {/* input Form เบอโทรศัพท์มือถือ */}
-                <Form.Item
-                    name='tel'
-                    id='tel'
-                    label="เบอร์โทรศัพท์มือถือ"
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        // width: 'calc(500px)',
-                    }}
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
+                    style={{ marginBottom: 0 }}
                 >
-                    <Select
-                        options={tell}
-                        onChange={handleChange}
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(250px)',
-                            textAlign: 'center'
-                        }}
-                    />
-                </Form.Item>
+                    <Col className='gutter-row' span={9} >
 
-                <Form.List
-                    name="tel"
-                >
-                    {(fields, { add, remove }) => (
-                        <>
-                            <span>
-                                <Button onClick={() => add()} block icon={<PlusOutlined />}
-                                    style={{ width: '100px', textAlign: 'center', marginBottom: 5 }}
-                                >
-                                    เพิ่ม
-                                </Button>
-                            </span>
-                            <Form >
-                                {fields.map((field) => (
-                                    <Form.Item
-                                        style={{ marginBottom: 0 }}
-                                    >
-                                        <Space key={field.key} align="baseline" >
-                                            <Form.Item
-                                                noStyle
-                                                shouldUpdate={(prevValues, curValues) =>
-                                                    prevValues.tell !== curValues.tell || prevValues.teller !== curValues.teller
-                                                }
-                                            >
-                                                {() => (
-                                                    <Form.Item
-                                                        {...field}
-                                                        label="ความสัมพันธ์"
-                                                        name={[field.name]}
-                                                        rules={[
-                                                            {
-                                                                required: true,
-                                                                message: 'Missing Tel',
-                                                            },
-                                                        ]}
+                        <Form.Item style={styletext}>
+                            เบอร์โทรศัพท์มือถือ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={15} style={{ marginBottom: 0 }}>
+                        <Form style={style}>
+                            <Form.Item
+                                name='tel'
+                                id='tel'
+                                style={{ display: 'inline-block', width: 'calc(200px)' }}
+                            >
+                                <Select
+                                    options={tell}
+                                    onChange={handleChange}
+                                />
+                            </Form.Item>
+                            <Form.List
+                                name="Tel"
+                            >
+                                {(fields, { add, remove, save }) => (
+                                    <>
+                                        <Button onClick={() => add()} blockicon={<PlusOutlined />}
+                                            style={{ width: '100px', marginBottom: 5, marginLeft: 5 }}
+                                        >
+                                            เพิ่ม
+                                        </Button>
+                                        <Form >
+                                            {fields.map((field) => (
+                                                <div key={field.key}  >
+                                                    <Form
+                                                        shouldUpdate={(prevValues, curValues) =>
+                                                            prevValues.tell !== curValues.tell || prevValues.teller !== curValues.teller
+                                                        }
                                                     >
-                                                        <Select
-                                                            disabled={!form.getFieldValue('tel')}
-                                                            style={{
-                                                                width: 150,
-                                                            }}
-                                                        >
-                                                            {/* {(teller[form.getFieldValue('teller')] || []).map((item) => (
-                                                                <Option key={item} value={item}>
-                                                                    {item}
-                                                                </Option>
-                                                            ))} */}
-                                                            {teller.map((tel1) => (
-                                                                <Option key={tel1} value={tel1.value}  >
-                                                                    {tel1.value}
-                                                                </Option>
-                                                            ))}
-                                                        </Select>
-                                                    </Form.Item>
-                                                )}
-                                            </Form.Item>
-                                            <Form.Item
-                                                {...field}
-                                                label="เบอร์โทร"
-                                                name={[field.name, 'tel']}
+                                                        {() => (
+                                                            <>
+                                                                <Form.Item style={{ display: 'inline-block', marginBottom: 0, marginRight: 5 }}>
+                                                                    ความสัมพันธ์ :
+                                                                </Form.Item>
+                                                                <span style={{ display: 'inline-block' }}>
+                                                                    <Form.Item
+                                                                        {...field}
+                                                                        name={[field.name]}
+                                                                        rules={[
+                                                                            {
+                                                                                required: true,
+                                                                                message: 'Missing Tel',
+                                                                            },
+                                                                        ]}
+                                                                    >                                                                                                                                                  <Select
+                                                                        label='เลือก'
+                                                                        style={{
+                                                                            display: 'inline-block',
+                                                                            marginBottom: 0,
+                                                                            width: 150,
+                                                                        }}
+                                                                    >
+                                                                            {teller.map((tel1) => (
+                                                                                <Option key={tel1} value={tel1.value}  >
+                                                                                    {tel1.value}
+                                                                                </Option>
+                                                                            ))}
+                                                                        </Select>
+                                                                        <span style={{ marginRight: 5, marginLeft: 20 }}>เบอร์โทร :</span>
+                                                                        <Form.Item
+                                                                            style={{ display: 'inline-block', marginBottom: 0 }}
+                                                                            {...field}
+                                                                            name={[field.name, 'tel']}
+                                                                            rules={[
+                                                                                {
+                                                                                    required: true,
+                                                                                    message: 'Missing Tel',
+                                                                                },
+                                                                            ]}
+                                                                        >
+                                                                            <Input style={{ width: 'calc(150px)' }} />
+                                                                        </Form.Item>
 
-                                            >
-                                                <Input />
-                                            </Form.Item>
-                                            {/* Button Save Item */}
-                                            {/* <SaveOutlined onClick={() => save(field.name)} /> */}
-                                            <CheckCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#5b8c00'
-                                                }}
-                                            />
-                                            {/* Button minus Item */}
-                                            <MinusCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#cf1322'
-                                                }}
-                                            />
-                                        </Space>
-                                    </Form.Item>
-                                ))}
-                            </Form>
-                        </>
-                    )}
-                </Form.List>
-                {/* input Form Email */}
-                <Form.Item
-                    name='email'
-                    id='email'
-                    label='Email Address'
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        // width: 'calc(500px)',
-                    }}
-                >
-                    <Select
-                        options={email}
-                        onChange={handleChange}
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(250px)',
-                            textAlign: 'center',
-                            marginLeft: 10,
-                            marginRight: 4
-                        }}
-                    />
-                </Form.Item>
 
-                <Form.List
-                    name="email"
+                                                                        {/* Button Save Item */}
+                                                                        {/* <SaveOutlined onClick={() => save(field.name)} /> */}
+                                                                        <CheckCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                marginLeft: 10,
+                                                                                marginRight: 5,
+                                                                                fontSize: '30px',
+                                                                                color: '#5b8c00',
+                                                                            }}
+                                                                        />
+                                                                        {/* Button minus Item */}
+                                                                        <MinusCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                fontSize: '30px',
+                                                                                color: '#cf1322',
+                                                                            }}
+                                                                        />
+                                                                    </Form.Item>
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </Form>
+                                                </div>
+                                            ))}
+                                        </Form>
+                                    </>
+                                )}
+                            </Form.List>
+                        </Form>
+                    </Col>
+                </Row>
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    {(fields, { add, remove }) => (
-                        <>
-                            <span>
-                                <Button onClick={() => add()} block icon={<PlusOutlined />}
-                                    style={{ width: '100px', textAlign: 'center', marginBottom: 5, marginLeft: 15 }}
-                                >
-                                    เพิ่ม
-                                </Button>
-                            </span>
-                            <Form >
-                                {fields.map((field) => (
-                                    <Form.Item
-                                        style={{ marginBottom: 0 }}
-                                    >
-                                        <Space key={field.key} align="baseline" >
-                                            <Form.Item
-                                                noStyle
-                                                shouldUpdate={(prevValues, curValues) =>
-                                                    prevValues.email !== curValues.email || prevValues.teller !== curValues.teller
-                                                }
-                                            >
-                                                {() => (
-                                                    <Form.Item
-                                                        {...field}
-                                                        label="เลือก"
-                                                        name={[field.name, 'email']}
-                                                        rules={[
-                                                            {
-                                                                required: true,
-                                                                message: 'Missing Email',
-                                                            },
-                                                        ]}
+                    <Col className='gutter-row' span={9} >
+
+                        <Form.Item style={styletext}>
+                            Email Address :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={15} style={{ marginBottom: 0 }}>
+                        <Form style={style}>
+                            <Form.Item
+                                name='email'
+                                id='email'
+                                style={{ display: 'inline-block', width: 'calc(200px)' }}
+                            >
+                                <Select
+                                    options={email}
+                                    onChange={handleChange}
+                                />
+                            </Form.Item>
+                            <Form.List
+                                name="Email"
+                            >
+                                {(fields, { add, remove, save }) => (
+                                    <>
+                                        <Button onClick={() => add()} blockicon={<PlusOutlined />}
+                                            style={{ width: '100px', marginBottom: 5, marginLeft: 5 }}
+                                        >
+                                            เพิ่ม
+                                        </Button>
+                                        <Form >
+                                            {fields.map((field) => (
+                                                <div key={field.key}  >
+                                                    <Form
+                                                        shouldUpdate={(prevValues, curValues) =>
+                                                            prevValues.email !== curValues.email || prevValues.teller !== curValues.teller
+                                                        }
                                                     >
-                                                        <Select
-                                                            disabled={!form.getFieldValue('email')}
-                                                            style={{
-                                                                width: 150,
-                                                            }}
-                                                        >
-                                                            {/* {(teller[form.getFieldValue('teller')] || []).map((item) => (
-                                                                <Option key={item} value={item}>
-                                                                    {item}
-                                                                </Option>
-                                                            ))} */}
-                                                            {per.map((email1) => (
-                                                                <Option key={email1} value={email1.value} >
-                                                                    {email1.value}
-                                                                </Option>
-                                                            ))}
-                                                        </Select>
-                                                    </Form.Item>
-                                                )}
-                                            </Form.Item>
-                                            <Form.Item
-                                                {...field}
-                                                label="Email "
-                                                name={[field.name, '']}
+                                                        {() => (
+                                                            <>
+                                                                <Form.Item style={{ display: 'inline-block', marginBottom: 0, marginRight: 5 }}>
+                                                                    ความสัมพันธ์ :
+                                                                </Form.Item>
+                                                                <span style={{ display: 'inline-block' }}>
+                                                                    <Form.Item
+                                                                        {...field}
+                                                                        name={[field.name]}
+                                                                        rules={[
+                                                                            {
+                                                                                required: true,
+                                                                                message: 'Missing Email',
+                                                                            },
+                                                                        ]}
+                                                                    >                                                                                                                                                  <Select
+                                                                        label='เลือก'
+                                                                        style={{
+                                                                            display: 'inline-block',
+                                                                            marginBottom: 0,
+                                                                            width: 150,
+                                                                        }}
+                                                                    >
+                                                                            {teller.map((tel1) => (
+                                                                                <Option key={tel1} value={tel1.value}  >
+                                                                                    {tel1.value}
+                                                                                </Option>
+                                                                            ))}
+                                                                        </Select>
+                                                                        <span style={{ marginRight: 5, marginLeft: 20 }}>เบอร์โทร :</span>
+                                                                        <Form.Item
+                                                                            style={{ display: 'inline-block', marginBottom: 0 }}
+                                                                            {...field}
+                                                                            name={[field.name, 'Email']}
+                                                                            rules={[
+                                                                                {
+                                                                                    required: true,
+                                                                                    message: 'Missing Email',
+                                                                                },
+                                                                            ]}
+                                                                        >
+                                                                            <Input style={{ width: 'calc(150px)' }} />
+                                                                        </Form.Item>
 
-                                            >
-                                                <Input style={{
-                                                    width: 250,
-                                                }} />
-                                            </Form.Item>
-                                            {/* Button Save Item */}
-                                            {/* <SaveOutlined onClick={() => save(field.name)} /> */}
-                                            <CheckCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#5b8c00'
-                                                }}
-                                            />
-                                            {/* Button minus Item */}
-                                            <MinusCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#cf1322'
-                                                }}
-                                            />
-                                        </Space>
-                                    </Form.Item>
-                                ))}
-                            </Form>
-                        </>
-                    )}
-                </Form.List>
-                {/* input Form FaceBook */}
-                <Form.Item
-                    name="facebook"
-                    id="facebook"
-                    label="FaceBook"
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        // width: 'calc(500px)',
-                    }}
-                >
-                    <Select
-                        options={facebook}
-                        onChange={handleChange}
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(250px)',
-                            textAlign: 'center',
-                            marginLeft: 18,
-                            marginRight: 4
-                        }}
-                    />
-                </Form.Item>
 
-                <Form.List
-                    name="facebook"
+                                                                        {/* Button Save Item */}
+                                                                        {/* <SaveOutlined onClick={() => save(field.name)} /> */}
+                                                                        <CheckCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                marginLeft: 10,
+                                                                                marginRight: 5,
+                                                                                fontSize: '30px',
+                                                                                color: '#5b8c00',
+                                                                            }}
+                                                                        />
+                                                                        {/* Button minus Item */}
+                                                                        <MinusCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                fontSize: '30px',
+                                                                                color: '#cf1322',
+                                                                            }}
+                                                                        />
+                                                                    </Form.Item>
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </Form>
+                                                </div>
+                                            ))}
+                                        </Form>
+                                    </>
+                                )}
+                            </Form.List>
+                        </Form>
+                    </Col>
+                </Row>
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    {(fields, { add, remove }) => (
-                        <>
-                            <span>
-                                <Button onClick={() => add()} block icon={<PlusOutlined />}
-                                    style={{ width: '100px', textAlign: 'center', marginBottom: 5, marginLeft: 35 }}
-                                >
-                                    เพิ่ม
-                                </Button>
-                            </span>
-                            <Form >
-                                {fields.map((field) => (
-                                    <Form.Item
-                                        style={{ marginBottom: 0 }}
-                                    >
-                                        <Space key={field.key} align="baseline" >
-                                            <Form.Item
-                                                noStyle
-                                                shouldUpdate={(prevValues, curValues) =>
-                                                    prevValues.facebook !== curValues.facebook || prevValues.teller !== curValues.teller
-                                                }
-                                            >
-                                                {() => (
-                                                    <Form.Item
-                                                        {...field}
-                                                        label="เลือก"
-                                                        name={[field.name, 'facebook']}
-                                                        rules={[
-                                                            {
-                                                                required: true,
-                                                                message: 'Missing Facebook',
-                                                            },
-                                                        ]}
+                    <Col className='gutter-row' span={9} >
+
+                        <Form.Item style={styletext}>
+                            Facebook :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={15} style={{ marginBottom: 0 }}>
+                        <Form style={style}>
+                            <Form.Item
+                                name='facebook'
+                                id='facebook'
+                                style={{ display: 'inline-block', width: 'calc(200px)' }}
+                            >
+                                <Select
+                                    options={facebook}
+                                    onChange={handleChange}
+                                />
+                            </Form.Item>
+                            <Form.List
+                                name="Facebook"
+                            >
+                                {(fields, { add, remove, save }) => (
+                                    <>
+                                        <Button onClick={() => add()} blockicon={<PlusOutlined />}
+                                            style={{ width: '100px', marginBottom: 5, marginLeft: 5 }}
+                                        >
+                                            เพิ่ม
+                                        </Button>
+                                        <Form >
+                                            {fields.map((field) => (
+                                                <div key={field.key}  >
+                                                    <Form
+                                                        shouldUpdate={(prevValues, curValues) =>
+                                                            prevValues.facebook !== curValues.facebook || prevValues.teller !== curValues.teller
+                                                        }
                                                     >
-                                                        <Select
-                                                            // disabled={!form.getFieldValue('facebok')}
-                                                            style={{
-                                                                width: 150,
-                                                            }}
-                                                        >
-                                                            {/* {(teller[form.getFieldValue('teller')] || []).map((item) => (
-                                                                <Option key={item} value={item}>
-                                                                    {item}
-                                                                </Option>
-                                                            ))} */}
-                                                            {per.map((face) => (
-                                                                <Option key={face} value={face.value} >
-                                                                    {face.value}
-                                                                </Option>
-                                                            ))}
-                                                        </Select>
-                                                    </Form.Item>
-                                                )}
-                                            </Form.Item>
-                                            <Form.Item
-                                                {...field}
-                                                label="Facebook "
-                                                name={[field.name, '']}
+                                                        {() => (
+                                                            <>
+                                                                <Form.Item style={{ display: 'inline-block', marginBottom: 0, marginRight: 5 }}>
+                                                                    ความสัมพันธ์ :
+                                                                </Form.Item>
+                                                                <span style={{ display: 'inline-block' }}>
+                                                                    <Form.Item
+                                                                        {...field}
+                                                                        name={[field.name]}
+                                                                        rules={[
+                                                                            {
+                                                                                required: true,
+                                                                                message: 'Missing Facebook',
+                                                                            },
+                                                                        ]}
+                                                                    >                                                                                                                                                  <Select
+                                                                        label='เลือก'
+                                                                        style={{
+                                                                            display: 'inline-block',
+                                                                            marginBottom: 0,
+                                                                            width: 150,
+                                                                        }}
+                                                                    >
+                                                                            {teller.map((tel1) => (
+                                                                                <Option key={tel1} value={tel1.value}  >
+                                                                                    {tel1.value}
+                                                                                </Option>
+                                                                            ))}
+                                                                        </Select>
+                                                                        <span style={{ marginRight: 5, marginLeft: 20 }}>เบอร์โทร :</span>
+                                                                        <Form.Item
+                                                                            style={{ display: 'inline-block', marginBottom: 0 }}
+                                                                            {...field}
+                                                                            name={[field.name, 'Facebook']}
+                                                                            rules={[
+                                                                                {
+                                                                                    required: true,
+                                                                                    message: 'Missing Facebook',
+                                                                                },
+                                                                            ]}
+                                                                        >
+                                                                            <Input style={{ width: 'calc(150px)' }} />
+                                                                        </Form.Item>
 
-                                            >
-                                                <Input style={{
-                                                    width: 250,
-                                                }} />
-                                            </Form.Item>
-                                            {/* Button Save Item */}
-                                            {/* <SaveOutlined onClick={() => save(field.name)} /> */}
-                                            <CheckCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#5b8c00'
-                                                }}
-                                            />
-                                            {/* Button minus Item */}
-                                            <MinusCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#cf1322'
-                                                }}
-                                            />
-                                        </Space>
-                                    </Form.Item>
-                                ))}
-                            </Form>
-                        </>
-                    )}
-                </Form.List>
-                {/* input Form Line */}
-                <Form.Item
-                    name="line"
-                    id="line"
-                    label="Line"
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        // width: 'calc(500px)',
-                    }}
-                >
-                    <Select
-                        options={line}
-                        onChange={handleChange}
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(250px)',
-                            textAlign: 'center',
-                            marginLeft: 26,
-                            marginRight: 4
-                        }}
-                    />
-                </Form.Item>
 
-                <Form.List
-                    name="line"
+                                                                        {/* Button Save Item */}
+                                                                        {/* <SaveOutlined onClick={() => save(field.name)} /> */}
+                                                                        <CheckCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                marginLeft: 10,
+                                                                                marginRight: 5,
+                                                                                fontSize: '30px',
+                                                                                color: '#5b8c00',
+                                                                            }}
+                                                                        />
+                                                                        {/* Button minus Item */}
+                                                                        <MinusCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                fontSize: '30px',
+                                                                                color: '#cf1322',
+                                                                            }}
+                                                                        />
+                                                                    </Form.Item>
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </Form>
+                                                </div>
+                                            ))}
+                                        </Form>
+                                    </>
+                                )}
+                            </Form.List>
+                        </Form>
+                    </Col>
+                </Row>
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    {(fields, { add, remove }) => (
-                        <>
-                            <span>
-                                <Button onClick={() => add()} block icon={<PlusOutlined />}
-                                    style={{ width: '100px', textAlign: 'center', marginBottom: 5, marginLeft: 60 }}
-                                >
-                                    เพิ่ม
-                                </Button>
-                            </span>
-                            <Form >
-                                {fields.map((field) => (
-                                    <Form.Item
-                                        style={{ marginBottom: 0 }}
-                                    >
-                                        <Space key={field.key} align="baseline" >
-                                            <Form.Item
-                                                noStyle
-                                                shouldUpdate={(prevValues, curValues) =>
-                                                    prevValues.line !== curValues.line || prevValues.teller !== curValues.teller
-                                                }
-                                            >
-                                                {() => (
-                                                    <Form.Item
-                                                        {...field}
-                                                        label="เลือก"
-                                                        name={[field.name, 'line']}
-                                                        rules={[
-                                                            {
-                                                                required: true,
-                                                                message: 'Missing line',
-                                                            },
-                                                        ]}
+                    <Col className='gutter-row' span={9} >
+
+                        <Form.Item style={styletext}>
+                            LineID :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={15} style={{ marginBottom: 0 }}>
+                        <Form style={style}>
+                            <Form.Item
+                                name='line'
+                                id='line'
+                                style={{ display: 'inline-block', width: 'calc(200px)' }}
+                            >
+                                <Select
+                                    options={line}
+                                    onChange={handleChange}
+                                />
+                            </Form.Item>
+                            <Form.List
+                                name="LineID"
+                            >
+                                {(fields, { add, remove, save }) => (
+                                    <>
+                                        <Button onClick={() => add()} blockicon={<PlusOutlined />}
+                                            style={{ width: '100px', marginBottom: 5, marginLeft: 5 }}
+                                        >
+                                            เพิ่ม
+                                        </Button>
+                                        <Form >
+                                            {fields.map((field) => (
+                                                <div key={field.key}  >
+                                                    <Form
+                                                        shouldUpdate={(prevValues, curValues) =>
+                                                            prevValues.line !== curValues.line || prevValues.teller !== curValues.teller
+                                                        }
                                                     >
-                                                        <Select
-                                                            // disabled={!form.getFieldValue('facebok')}
-                                                            style={{
-                                                                width: 150,
-                                                            }}
-                                                        >
-                                                            {/* {(teller[form.getFieldValue('teller')] || []).map((item) => (
-                                                                <Option key={item} value={item}>
-                                                                    {item}
-                                                                </Option>
-                                                            ))} */}
-                                                            {per.map((line) => (
-                                                                <Option key={line} value={line.value} >
-                                                                    {line.value}
-                                                                </Option>
-                                                            ))}
-                                                        </Select>
-                                                    </Form.Item>
-                                                )}
-                                            </Form.Item>
-                                            <Form.Item
-                                                {...field}
-                                                label="Line "
-                                                name={[field.name, '']}
+                                                        {() => (
+                                                            <>
+                                                                <Form.Item style={{ display: 'inline-block', marginBottom: 0, marginRight: 5 }}>
+                                                                    ความสัมพันธ์ :
+                                                                </Form.Item>
+                                                                <span style={{ display: 'inline-block' }}>
+                                                                    <Form.Item
+                                                                        {...field}
+                                                                        name={[field.name]}
+                                                                        rules={[
+                                                                            {
+                                                                                required: true,
+                                                                                message: 'Missing Line',
+                                                                            },
+                                                                        ]}
+                                                                    >                                                                                                                                                  <Select
+                                                                        label='เลือก'
+                                                                        style={{
+                                                                            display: 'inline-block',
+                                                                            marginBottom: 0,
+                                                                            width: 150,
+                                                                        }}
+                                                                    >
+                                                                            {teller.map((tel1) => (
+                                                                                <Option key={tel1} value={tel1.value}  >
+                                                                                    {tel1.value}
+                                                                                </Option>
+                                                                            ))}
+                                                                        </Select>
+                                                                        <span style={{ marginRight: 5, marginLeft: 20 }}>เบอร์โทร :</span>
+                                                                        <Form.Item
+                                                                            style={{ display: 'inline-block', marginBottom: 0 }}
+                                                                            {...field}
+                                                                            name={[field.name, 'LineID']}
+                                                                            rules={[
+                                                                                {
+                                                                                    required: true,
+                                                                                    message: 'Missing LineID',
+                                                                                },
+                                                                            ]}
+                                                                        >
+                                                                            <Input style={{ width: 'calc(150px)' }} />
+                                                                        </Form.Item>
 
-                                            >
-                                                <Input style={{
-                                                    width: 250,
-                                                }} />
-                                            </Form.Item>
-                                            {/* Button Save Item */}
-                                            {/* <SaveOutlined onClick={() => save(field.name)} /> */}
-                                            <CheckCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#5b8c00'
-                                                }}
-                                            />
-                                            {/* Button minus Item */}
-                                            <MinusCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#cf1322'
-                                                }}
-                                            />
-                                        </Space>
-                                    </Form.Item>
-                                ))}
-                            </Form>
-                        </>
-                    )}
-                </Form.List>
-                {/* input Form เบอร์บ้าน */}
-                <Form.Item
-                    name="telhome"
-                    id='telhome'
-                    label="เบอร์บ้าน"
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        // width: 'calc(500px)',
-                    }}
-                >
-                    <Select
-                        options={telhome}
-                        onChange={handleChange}
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(250px)',
-                            textAlign: 'center',
-                            marginLeft: 18,
-                            marginRight: 4
-                        }}
-                    />
-                </Form.Item>
 
-                <Form.List
-                    name="telhome"
+                                                                        {/* Button Save Item */}
+                                                                        {/* <SaveOutlined onClick={() => save(field.name)} /> */}
+                                                                        <CheckCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                marginLeft: 10,
+                                                                                marginRight: 5,
+                                                                                fontSize: '30px',
+                                                                                color: '#5b8c00',
+                                                                            }}
+                                                                        />
+                                                                        {/* Button minus Item */}
+                                                                        <MinusCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                fontSize: '30px',
+                                                                                color: '#cf1322',
+                                                                            }}
+                                                                        />
+                                                                    </Form.Item>
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </Form>
+                                                </div>
+                                            ))}
+                                        </Form>
+                                    </>
+                                )}
+                            </Form.List>
+                        </Form>
+                    </Col>
+                </Row>
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    {(fields, { add, remove }) => (
-                        <>
-                            <span>
-                                <Button onClick={() => add()} block icon={<PlusOutlined />}
-                                    style={{ width: '100px', textAlign: 'center', marginBottom: 5, marginLeft: 36 }}
-                                >
-                                    เพิ่ม
-                                </Button>
-                            </span>
-                            <Form >
-                                {fields.map((field) => (
-                                    <Form.Item
-                                        style={{ marginBottom: 0 }}
-                                    >
-                                        <Space key={field.key} align="baseline" >
-                                            <Form.Item
-                                                noStyle
-                                                shouldUpdate={(prevValues, curValues) =>
-                                                    prevValues.telhome !== curValues.telhome || prevValues.teller !== curValues.teller
-                                                }
-                                            >
-                                                {() => (
-                                                    <Form.Item
-                                                        {...field}
-                                                        label="เลือก"
-                                                        name={[field.name, 'telhome']}
-                                                        rules={[
-                                                            {
-                                                                required: true,
-                                                                message: 'Missing telhome',
-                                                            },
-                                                        ]}
+                    <Col className='gutter-row' span={9} >
+
+                        <Form.Item style={styletext}>
+                            เบอร์บ้าน :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={15} style={{ marginBottom: 0 }}>
+                        <Form style={style}>
+                            <Form.Item
+                                name='telhome'
+                                id='telhome'
+                                style={{ display: 'inline-block', width: 'calc(200px)' }}
+                            >
+                                <Select
+                                    options={telhome}
+                                    onChange={handleChange}
+                                />
+                            </Form.Item>
+                            <Form.List
+                                name="TelHome"
+                            >
+                                {(fields, { add, remove, save }) => (
+                                    <>
+                                        <Button onClick={() => add()} blockicon={<PlusOutlined />}
+                                            style={{ width: '100px', marginBottom: 5, marginLeft: 5 }}
+                                        >
+                                            เพิ่ม
+                                        </Button>
+                                        <Form >
+                                            {fields.map((field) => (
+                                                <div key={field.key}  >
+                                                    <Form
+                                                        shouldUpdate={(prevValues, curValues) =>
+                                                            prevValues.telhome !== curValues.telhome || prevValues.teller !== curValues.teller
+                                                        }
                                                     >
-                                                        <Select
-                                                            // disabled={!form.getFieldValue('facebok')}
-                                                            style={{
-                                                                width: 150,
-                                                            }}
-                                                        >
-                                                            {/* {(teller[form.getFieldValue('teller')] || []).map((item) => (
-                                                                <Option key={item} value={item}>
-                                                                    {item}
-                                                                </Option>
-                                                            ))} */}
-                                                            {per.map((face) => (
-                                                                <Option key={face} value={face.value} >
-                                                                    {face.value}
-                                                                </Option>
-                                                            ))}
-                                                        </Select>
-                                                    </Form.Item>
-                                                )}
-                                            </Form.Item>
-                                            <Form.Item
-                                                {...field}
-                                                label="เบอร์บ้าน"
-                                                name={[field.name, '']}
+                                                        {() => (
+                                                            <>
+                                                                <Form.Item style={{ display: 'inline-block', marginBottom: 0, marginRight: 5 }}>
+                                                                    ความสัมพันธ์ :
+                                                                </Form.Item>
+                                                                <span style={{ display: 'inline-block' }}>
+                                                                    <Form.Item
+                                                                        {...field}
+                                                                        name={[field.name]}
+                                                                        rules={[
+                                                                            {
+                                                                                required: true,
+                                                                                message: 'Missing Telhome',
+                                                                            },
+                                                                        ]}
+                                                                    >                                                                                                                                                  <Select
+                                                                        label='เลือก'
+                                                                        style={{
+                                                                            display: 'inline-block',
+                                                                            marginBottom: 0,
+                                                                            width: 150,
+                                                                        }}
+                                                                    >
+                                                                            {teller.map((tel1) => (
+                                                                                <Option key={tel1} value={tel1.value}  >
+                                                                                    {tel1.value}
+                                                                                </Option>
+                                                                            ))}
+                                                                        </Select>
+                                                                        <span style={{ marginRight: 5, marginLeft: 20 }}>เบอร์โทร :</span>
+                                                                        <Form.Item
+                                                                            style={{ display: 'inline-block', marginBottom: 0 }}
+                                                                            {...field}
+                                                                            name={[field.name, 'TelHome']}
+                                                                            rules={[
+                                                                                {
+                                                                                    required: true,
+                                                                                    message: 'Missing TelHome',
+                                                                                },
+                                                                            ]}
+                                                                        >
+                                                                            <Input style={{ width: 'calc(150px)' }} />
+                                                                        </Form.Item>
 
-                                            >
-                                                <Input style={{
-                                                    width: 250,
-                                                }} />
-                                            </Form.Item>
-                                            {/* Button Save Item */}
-                                            {/* <SaveOutlined onClick={() => save(field.name)} /> */}
-                                            <CheckCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#5b8c00'
-                                                }}
-                                            />
-                                            {/* Button minus Item */}
-                                            <MinusCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#cf1322'
-                                                }}
-                                            />
-                                        </Space>
-                                    </Form.Item>
-                                ))}
-                            </Form>
-                        </>
-                    )}
-                </Form.List>
-                {/* input Form เบอร์ที่ทำงาน */}
-                <Form.Item
-                    name='telwork'
-                    id='telwork'
-                    label="เบอร์ที่ทำงาน"
-                    rules={[{ required: true, message: 'Missing area', },]}
-                    style={{
-                        display: 'inline-block',
-                        lineHeight: '32px',
-                        textAlign: 'center',
-                        marginBottom: 2,
-                        // width: 'calc(500px)',
-                    }}
+
+                                                                        {/* Button Save Item */}
+                                                                        {/* <SaveOutlined onClick={() => save(field.name)} /> */}
+                                                                        <CheckCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                marginLeft: 10,
+                                                                                marginRight: 5,
+                                                                                fontSize: '30px',
+                                                                                color: '#5b8c00',
+                                                                            }}
+                                                                        />
+                                                                        {/* Button minus Item */}
+                                                                        <MinusCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                fontSize: '30px',
+                                                                                color: '#cf1322',
+                                                                            }}
+                                                                        />
+                                                                    </Form.Item>
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </Form>
+                                                </div>
+                                            ))}
+                                        </Form>
+                                    </>
+                                )}
+                            </Form.List>
+                        </Form>
+                    </Col>
+                </Row>
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    <Select
-                        options={telwork}
-                        onChange={handleChange}
-                        style={{
-                            lineHeight: '32px',
-                            width: 'calc(250px)',
-                            textAlign: 'center',
-                            marginLeft: 17,
+                    <Col className='gutter-row' span={9} >
 
-                        }}
-                    />
-                </Form.Item>
-
-                <Form.List
-                    name="telwork"
-                >
-                    {(fields, { add, remove }) => (
-                        <>
-                            <span>
-                                <Button onClick={() => add(1)} block icon={<PlusOutlined />}
-                                    style={{ width: '100px', textAlign: 'center', marginBottom: 20, marginLeft: 25 }}
-                                >
-                                    เพิ่ม
-                                </Button>
-                            </span>
-                            <Form >
-                                {fields.map((field) => (
-                                    <Form.Item
-                                        style={{ marginBottom: 0 }}
-                                    >
-                                        <Space key={field.key} align="baseline" >
-                                            <Form.Item
-                                                noStyle
-                                                shouldUpdate={(prevValues, curValues) =>
-                                                    prevValues.telwork !== curValues.telwork || prevValues.teller !== curValues.teller
-                                                }
-                                            >
-                                                {() => (
-                                                    <Form.Item
-                                                        {...field}
-                                                        label="เลือก"
-                                                        name={[field.name, 'telwork']}
-                                                        rules={[
-                                                            {
-                                                                required: true,
-                                                                message: 'Missing telwork',
-                                                            },
-                                                        ]}
+                        <Form.Item style={styletext}>
+                            เบอร์ที่ทำงาน :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={15} style={{ marginBottom: 0 }}>
+                        <Form style={style}>
+                            <Form.Item
+                                name='telwork'
+                                id='telwork'
+                                style={{ display: 'inline-block', width: 'calc(200px)' }}
+                            >
+                                <Select
+                                    options={telwork}
+                                    onChange={handleChange}
+                                />
+                            </Form.Item>
+                            <Form.List
+                                name="TelWork"
+                            >
+                                {(fields, { add, remove, save }) => (
+                                    <>
+                                        <Button onClick={() => add()} blockicon={<PlusOutlined />}
+                                            style={{ width: '100px', marginBottom: 5, marginLeft: 5 }}
+                                        >
+                                            เพิ่ม
+                                        </Button>
+                                        <Form >
+                                            {fields.map((field) => (
+                                                <div key={field.key}  >
+                                                    <Form
+                                                        shouldUpdate={(prevValues, curValues) =>
+                                                            prevValues.telwork !== curValues.telwork || prevValues.teller !== curValues.teller
+                                                        }
                                                     >
-                                                        <Select
-                                                            // disabled={!form.getFieldValue('facebok')}
-                                                            style={{
-                                                                width: 150,
-                                                            }}
-                                                        >
-                                                            {/* {(teller[form.getFieldValue('teller')] || []).map((item) => (
-                                                                <Option key={item} value={item}>
-                                                                    {item}
-                                                                </Option>
-                                                            ))} */}
-                                                            {per.map((face) => (
-                                                                <Option key={face} value={face.value} >
-                                                                    {face.value}
-                                                                </Option>
-                                                            ))}
-                                                        </Select>
-                                                    </Form.Item>
-                                                )}
-                                            </Form.Item>
-                                            <Form.Item
-                                                {...field}
-                                                label="เบอร์ที่ทำงาน"
-                                                name={[field.name, '']}
+                                                        {() => (
+                                                            <>
+                                                                <Form.Item style={{ display: 'inline-block', marginBottom: 0, marginRight: 5 }}>
+                                                                    ความสัมพันธ์ :
+                                                                </Form.Item>
+                                                                <span style={{ display: 'inline-block' }}>
+                                                                    <Form.Item
+                                                                        {...field}
+                                                                        name={[field.name]}
+                                                                        rules={[
+                                                                            {
+                                                                                required: true,
+                                                                                message: 'Missing TelWork',
+                                                                            },
+                                                                        ]}
+                                                                    >                                                                                                                                                  <Select
+                                                                        label='เลือก'
+                                                                        style={{
+                                                                            display: 'inline-block',
+                                                                            marginBottom: 0,
+                                                                            width: 150,
+                                                                        }}
+                                                                    >
+                                                                            {teller.map((tel1) => (
+                                                                                <Option key={tel1} value={tel1.value}  >
+                                                                                    {tel1.value}
+                                                                                </Option>
+                                                                            ))}
+                                                                        </Select>
+                                                                        <span style={{ marginRight: 5, marginLeft: 20 }}>เบอร์โทร :</span>
+                                                                        <Form.Item
+                                                                            style={{ display: 'inline-block', marginBottom: 0 }}
+                                                                            {...field}
+                                                                            name={[field.name, 'TelWork']}
+                                                                            rules={[
+                                                                                {
+                                                                                    required: true,
+                                                                                    message: 'Missing TelWork',
+                                                                                },
+                                                                            ]}
+                                                                        >
+                                                                            <Input style={{ width: 'calc(150px)' }} />
+                                                                        </Form.Item>
 
-                                            >
-                                                <Input style={{
-                                                    width: 250,
-                                                }} />
-                                            </Form.Item>
-                                            {/* Button Save Item */}
-                                            {/* <SaveOutlined onClick={() => save(field.name)} /> */}
-                                            <CheckCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#5b8c00'
-                                                }}
-                                            />
-                                            {/* Button minus Item */}
-                                            <MinusCircleOutlined onClick={() => remove(field.name)}
-                                                style={{
-                                                    fontSize: '30px', color
-                                                        : '#cf1322'
-                                                }}
-                                            />
-                                        </Space>
-                                    </Form.Item>
-                                ))}
-                            </Form>
-                        </>
-                    )}
-                </Form.List>
+
+                                                                        {/* Button Save Item */}
+                                                                        {/* <SaveOutlined onClick={() => save(field.name)} /> */}
+                                                                        <CheckCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                marginLeft: 10,
+                                                                                marginRight: 5,
+                                                                                fontSize: '30px',
+                                                                                color: '#5b8c00',
+                                                                            }}
+                                                                        />
+                                                                        {/* Button minus Item */}
+                                                                        <MinusCircleOutlined onClick={() => remove(field.name)}
+                                                                            style={{
+                                                                                fontSize: '30px',
+                                                                                color: '#cf1322',
+                                                                            }}
+                                                                        />
+                                                                    </Form.Item>
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </Form>
+                                                </div>
+                                            ))}
+                                        </Form>
+                                    </>
+                                )}
+                            </Form.List>
+                        </Form>
+                    </Col>
+                </Row>
             </Form>
-        </React.Fragment>
+            <Divider>
+
+            </Divider>
+        </>
     )
 }
 export default Contract

@@ -32,164 +32,189 @@ function Drescription() {
         setPreviewOpen(true);
         setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/')));
     };
+    const style = {
+        // marginTop: '5px',
+        // width: '245px',
+    };
+    const styletext = {
+        textAlign: 'right'
+    };
+
+
     return (
-        <React.Fragment>
-            <div className='text-center text-black mt-3 mb-3'>
-                <h5><b>รายละเอียด</b></h5>
-            </div>
+        <>
+            <Divider>
+                รายละเอียด
+            </Divider>
             <Form
                 name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                style={{
-                    maxHeight: '100vh'
-                }}
                 initialValues={{
                     remember: true,
                 }}
             >
-                <span
-                    style={{ display: 'inline-block', lineHeight: '32px' }}
+                <Row
+                    align="left"
+                    justify="left"
+                    gutter={32}
                 >
-                    เลือก :
-                </span>
-                <Form.Item
-                    style={{
-                        display: 'inline-block',
-                        marginLeft: '10px',
-                        marginRight: '15px',
-                        marginBottom: 0,
-                        width: '200px',
-                    }}
-                >
-                    <Select
-                        defaultValue='เลือก'
-                        onChange={handleChang}
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginBottom: 0 }}
-                        options={[
-                            {
-                                label: 'ถือเล่มมา',
-                                value: 0,
-                            },
-                            {
-                                label: 'ปิดยอดไฟแนนซ์เดิม',
-                                value: 1,
-                            },
-                        ]}
-                    />
-                </Form.Item>
-                {/* <span ></span> */}
-                {/* หน้าฟอร์มในการเลือกประเภทเล่ม */}
-            </Form>
-            <Divider style={{ marginBottom: 0 }}>
-                {holds === 0 ? <HoldBooks /> : <CloseFinances />}
-            </Divider>
-            <Form.Item style={{ marginBottom: 0 }}>
-                <h5><b>หมวดรูปภาพ</b></h5>
-                <Row>
-                    <Col span={8}>
-                        <b>รูปรถ</b>
-                        <Form.Item
-                            style={{ marginBottom: 0 }}
-                        >
-                            <Form.Item
-                                style={{ display: 'inline-block', lineHeight: '32px', marginBottom: 0, marginLeft: '15px', maxWidth: 'calc(800px)' }}
-                            >
-                                <Upload
-                                    name="avatar"
-                                    listType="picture-card"
-                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                    onPreview={handlePreview}
-                                >
-                                    {/* {fileList.length >= 8 ? null : uploadButton} */}
-                                    <div style={{ marginBottom: 0 }}>
-                                        <PlusOutlined /><p />
-                                        รูปภาพ
-                                    </div>
-                                </Upload>
-                                {/* ดูภาพที่อัพโหลดมา */}
-                                <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-                                    <img
-                                        alt="example"
-                                        style={{
-                                            width: '100%',
-                                        }}
-                                        src={previewImage}
-                                    />
-                                </Modal>
-                            </Form.Item>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item style={styletext}>
+
                         </Form.Item>
                     </Col>
-                    <Col span={8}>
-                        <b>รูปเอกสาร</b>
-                        <Form.Item
-                            style={{ marginBottom: 0 }}
-                        >
-                            <Form.Item
-                                style={{ display: 'inline-block', lineHeight: '32px', marginBottom: 0, marginLeft: '15px', maxWidth: 'calc(800px)' }}
-                            >
-                                <Upload
-                                    name="avatar"
-                                    listType="picture-card"
-                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                    onPreview={handlePreview}
-                                >
-                                    {/* {fileList.length >= 8 ? null : uploadButton} */}
-                                    <div style={{ marginBottom: 0 }}>
-                                        <PlusOutlined /><p />
-                                        รูปภาพ
-                                    </div>
-                                </Upload>
-                                {/* ดูภาพที่อัพโหลดมา */}
-                                <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-                                    <img
-                                        alt="example"
-                                        style={{
-                                            width: '100%',
-                                        }}
-                                        src={previewImage}
-                                    />
-                                </Modal>
-                            </Form.Item>
+                    <Col className='gutter-row' span={4}>
+
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            เลือก :
                         </Form.Item>
                     </Col>
-                    <Col span={8}>
-                        <b>รูปใบเสร็จ</b>
+                    <Col className='gutter-row' span={4}>
                         <Form.Item
-                            style={{ marginBottom: 0 }}
+                            name='select'
+                            id='select'
                         >
-                            <Form.Item
-                                style={{ display: 'inline-block', lineHeight: '32px', marginBottom: 0, marginLeft: '15px', maxWidth: 'calc(800px)' }}
-                            >
-                                <Upload
-                                    name="avatar"
-                                    listType="picture-card"
-                                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                    onPreview={handlePreview}
-                                >
-                                    {/* {fileList.length >= 8 ? null : uploadButton} */}
-                                    <div style={{ marginBottom: 0 }}>
-                                        <PlusOutlined /><p />
-                                        รูปภาพ
-                                    </div>
-                                </Upload>
-                                {/* ดูภาพที่อัพโหลดมา */}
-                                <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-                                    <img
-                                        alt="example"
-                                        style={{
-                                            width: '100%',
-                                        }}
-                                        src={previewImage}
-                                    />
-                                </Modal>
-                            </Form.Item>
+                            <Select
+                                defaultValue='เลือก'
+                                onChange={handleChang}
+                                options={[
+                                    {
+                                        label: 'ถือเล่มมา',
+                                        value: 0,
+                                    },
+                                    {
+                                        label: 'ปิดยอดไฟแนนซ์เดิม',
+                                        value: 1,
+                                    },
+                                ]}
+                            />
                         </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item style={styletext}>
+
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+
                     </Col>
                 </Row>
-            </Form.Item>
-        </React.Fragment>
+                {/* หน้าฟอร์มในการเลือกประเภทเล่ม */}
+                <Row
+                    align="left"
+                    justify="center"
+                    gutter={32}
+                >
+                    {holds === 0 ? <HoldBooks /> : <CloseFinances />}
+                </Row>
+
+                <Form.Item style={{ marginBottom: 0 }}>
+                    <Divider>หมวดรูปภาพ</Divider>
+                    <Row>
+                        <Col span={8}>
+                            <b>รูปรถ</b>
+                            <Form.Item
+                                style={{ marginBottom: 0 }}
+                            >
+                                <Form.Item
+                                    style={{ display: 'inline-block', lineHeight: '32px', marginBottom: 0, marginLeft: '15px', maxWidth: 'calc(800px)' }}
+                                >
+                                    <Upload
+                                        name="avatar"
+                                        listType="picture-card"
+                                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                        onPreview={handlePreview}
+                                    >
+                                        {/* {fileList.length >= 8 ? null : uploadButton} */}
+                                        <div style={{ marginBottom: 0 }}>
+                                            <PlusOutlined /><p />
+                                            รูปภาพ
+                                        </div>
+                                    </Upload>
+                                    {/* ดูภาพที่อัพโหลดมา */}
+                                    <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+                                        <img
+                                            alt="example"
+                                            style={{
+                                                width: '100%',
+                                            }}
+                                            src={previewImage}
+                                        />
+                                    </Modal>
+                                </Form.Item>
+                            </Form.Item>
+                        </Col>
+                        <Col span={8}>
+                            <b>รูปเอกสาร</b>
+                            <Form.Item
+                                style={{ marginBottom: 0 }}
+                            >
+                                <Form.Item
+                                    style={{ display: 'inline-block', lineHeight: '32px', marginBottom: 0, marginLeft: '15px', maxWidth: 'calc(800px)' }}
+                                >
+                                    <Upload
+                                        name="avatar"
+                                        listType="picture-card"
+                                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                        onPreview={handlePreview}
+                                    >
+                                        {/* {fileList.length >= 8 ? null : uploadButton} */}
+                                        <div style={{ marginBottom: 0 }}>
+                                            <PlusOutlined /><p />
+                                            รูปภาพ
+                                        </div>
+                                    </Upload>
+                                    {/* ดูภาพที่อัพโหลดมา */}
+                                    <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+                                        <img
+                                            alt="example"
+                                            style={{
+                                                width: '100%',
+                                            }}
+                                            src={previewImage}
+                                        />
+                                    </Modal>
+                                </Form.Item>
+                            </Form.Item>
+                        </Col>
+                        <Col span={8}>
+                            <b>รูปใบเสร็จ</b>
+                            <Form.Item
+                                style={{ marginBottom: 0 }}
+                            >
+                                <Form.Item
+                                    style={{ display: 'inline-block', lineHeight: '32px', marginBottom: 0, marginLeft: '15px', maxWidth: 'calc(800px)' }}
+                                >
+                                    <Upload
+                                        name="avatar"
+                                        listType="picture-card"
+                                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                        onPreview={handlePreview}
+                                    >
+                                        {/* {fileList.length >= 8 ? null : uploadButton} */}
+                                        <div style={{ marginBottom: 0 }}>
+                                            <PlusOutlined /><p />
+                                            รูปภาพ
+                                        </div>
+                                    </Upload>
+                                    {/* ดูภาพที่อัพโหลดมา */}
+                                    <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+                                        <img
+                                            alt="example"
+                                            style={{
+                                                width: '100%',
+                                            }}
+                                            src={previewImage}
+                                        />
+                                    </Modal>
+                                </Form.Item>
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                </Form.Item>
+            </Form>
+        </>
     )
 }
 

@@ -167,6 +167,7 @@ const App = () => {
             <Grid item sx={12}>
               <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                 <Routes>
+                  <Route path='/' element={<Home />} />
                   <Route path='/home' element={<Home />} />
                   <Route path='/body_main_savedata' element={<BodyMainSaveData />} />
                   <Route path='/body_main_savepromise_money' element={<BodyMainPromiseMoney />} />
