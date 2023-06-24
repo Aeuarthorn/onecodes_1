@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Form, Input, Select } from 'antd';
+import { Col, Form, Input, Row, Select } from 'antd';
 import province from '../data/Province';
 import { Option } from 'antd/es/mentions';
 
@@ -12,403 +12,380 @@ function CloseFinances() {
     const onSearch = (value) => {
         console.log('search:', value);
     };
+    const style = {
+        // marginTop: '5px',
+        // width: '245px',
+    };
+    const styletext = {
+        textAlign: 'right'
+    };
+
 
     return (
-        <div>
+        <>
             <Form
-                name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                style={{
-                    maxWidth: '100vh',
-                }}
+                name='Hold_book'
                 initialValues={{
                     remember: true,
                 }}
             >
-                {/* รายละเอียดขอกู้ */}
-                <Form
-                    labelCol={{
-                        span: 1,
-                    }}
-                    style={{ textAlign: 'left', marginLeft: '30px', fontSize: '18px' }}
+                <div style={{ marginBottom: '10px', textAlign: 'left' }}>
+                    <b>รายละเอียดขอกู้</b>
+                </div>
+                <Row
+                    align='left'
+                    justify='left'
+                    gutter={32}
                 >
-                    <b>รายละเอียดขอกู้
-                    </b>
-                </Form>
-                <Form.Item
-                    name='name'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        ชื่อ - นามสกุล :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        ยอดที่ต้องการจัด :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item><span style={{ marginRight: '10px' }}>บาท</span>
 
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        เรทรถ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item><span >บาท</span>
-                </Form.Item>
-                <Form.Item
-                    name='name'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '20px' }}
-                    >
-                        ยอดกู้สุทธิ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(120px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item><span style={{ marginRight: '15px' }}>บาท</span>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        จำนวนผ่อน :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(100px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item><span style={{ marginRight: '15px' }}>งวด</span>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        ดอกเบี้ย :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(100px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item><span style={{ marginRight: '15px' }}>% ต่อปี</span>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        ดอกเบี้ยรวม :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(100px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item><span>% ต่อปี</span>
-                </Form.Item>
-                <Form.Item
-                    name='name'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '16px' }}
-                    >
-                        ผู้ตรวจสอบ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Select />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        พนักงานขาย :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Select />
-                    </Form.Item>
-
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        ผ่อนรวมดอกเบี้ย :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item><span>บาท</span>
-                </Form.Item>
-            </Form>
-            {/* รายละเอียดขอกู้ */}
-            <Form
-                labelCol={{
-                    span: 1,
-                }}
-                style={{ textAlign: 'left', marginLeft: '30px', fontSize: '18px' }}
-            >
-                <b>รายละเอียดไฟแนนซ์เดิม
-                </b>
-            </Form>
-            <Form.Item
-                name='name'
-                rules={[{ required: true, message: 'Please input your CardID' }]}
-                style={{
-                    marginBottom: 0,
-                }}
-            >
-                <span
-                    style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                >
-                    ยอดที่ต้องการ :
-                </span>
-                <Form.Item
-                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                >
-                    <Input />
-                </Form.Item><span style={{ marginRight: '10px' }}>บาท</span>
-                <span
-                    style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                >
-                    กี่งวด :
-                </span>
-                <Form.Item
-                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                >
-                    <Input />
-                </Form.Item><span style={{ marginRight: '10px' }}>งวด</span>
-
-                <span
-                    style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                >
-                    ยอดปิดไฟแนนซ์ :
-                </span>
-                <Form.Item
-                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                >
-                    <Input />
-                </Form.Item><span >บาท</span>
-            </Form.Item>
-            <Form.Item
-                name='name'
-                rules={[{ required: true, message: 'Please input your CardID' }]}
-                style={{
-                    marginBottom: 0,
-                }}
-            >
-                <span
-                    style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '35px' }}
-                >
-                    ค้างกี่งวด :
-                </span>
-                <Form.Item
-                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                >
-                    <Input />
-                </Form.Item><span style={{ marginRight: '15px' }}>บาท</span>
-                <span
-                    style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                >
-                    ค่างวด :
-                </span>
-                <Form.Item
-                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                >
-                    <Input />
-                </Form.Item><span style={{ marginRight: '15px' }}>งวด</span>
-                <span
-                    style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                >
-                    ยอดคงเหลือ :
-                </span>
-                <Form.Item
-                    style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                >
-                    <Input />
-                </Form.Item><span style={{ marginRight: '15px' }}>บาท</span>
-
-            </Form.Item>
-
-            {/* รายละเอียดรถ */}
-            <Form
-                labelCol={{
-                    span: 1,
-                }}
-                style={{ textAlign: 'left', marginLeft: '30px', fontSize: '18px' }}
-            >
-                <b>รายละเอียดรถ
-                </b>
-            </Form>
-            <Form
-                name='basic'
-                labelCol={{
-                    span: 8,
-                }}
-                style={{
-                    maxWidth: '100vh',
-                }}
-                initialValues={{
-                    remember: true,
-                }}
-            >
-                <Form.Item
-                    name='name'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '45px' }}
-                    >
-                        ยี่ห้อ :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        <Select />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '30px' }}
-                    >
-                        รุ่นสินค้า :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '80px' }}
-                    >
-                        <Select />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', margigLeft: '10px' }}
-                    >
-                        สี :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '15px' }}
-                    >
-                        <Select />
-                    </Form.Item>
-                </Form.Item>
-                <Form.Item
-                    name='name'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '15px' }}
-                    >
-                        เลขตัวถัง :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '15px' }}
-                    >
-                        <Input />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '10px' }}
-                    >
-                        เลขเครื่อง :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '15px' }}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '10px' }}
-                    >
-                        เลขทะเบียน :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '15px' }}
-                    >
-                        <Input />
-                    </Form.Item>
-                </Form.Item>
-                <Form.Item
-                    name='name'
-                    rules={[{ required: true, message: 'Please input your CardID' }]}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                >
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '20px' }}
-                    >
-                        กลุ่มสินค้า :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '45px' }}
-                    >
-                        <Select />
-                    </Form.Item>
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px', marginLeft: '12px' }}
-                    >
-                        รุ่นปี :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '50px' }}
-                    >
-                        <Select />
-                    </Form.Item>
-
-                    <span
-                        style={{ display: 'inline-block', lineHeight: '32px', textAlign: 'center', marginRight: '10px' }}
-                    >
-                        จังหวัด :
-                    </span>
-                    <Form.Item
-                        style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'center', marginRight: '30px' }}
-                    >
-                        <Select
-                            showSearch
-                            placeholder="Select a province"
-                            optionFilterProp="children"
-                            onChange={onChange}
-                            onSearch={onSearch}
-                            filterOption={(input, option) =>
-                                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                            }
-                            style={{ display: 'inline-block', lineHeight: '32px', width: 'calc(200px)', textAlign: 'left' }}
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item style={styletext}>
+                            ชื่อ - นามสกุล :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ยอดกู้สุทธิ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ผู้ตรวจสอบ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            name='name'
+                            id='name'
                         >
-                            {province.map((item) => (
-                                <Option key={item.province}>
-                                    {item.value}
-                                </Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
-                </Form.Item>
+                            {/* input Form  ชื่อ - นามสกุล*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            name='loanamount'
+                            id='loanamount'
+                        >
+                            {/* input Form  ยอดกู้สุทธิ*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            name='inspector'
+                            id='inspector'
+                        >
+                            {/* input Form  ผู้ตรวจสอบ*/}
+                            <Select />
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            ยอดที่ต้องการจัด :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            จำนวนผ่อน :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            พนักงานขาย :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            name='top_notch'
+                            id='top_notch'
+                        >
+                            {/* input Form  ยอดที่ต้องการจัด*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='installment_amount'
+                            id='installment_amount'
+                        >
+                            {/* input Form  จำนวนผ่อน*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='salesperson'
+                            id='salesperson'
+                        >
+                            {/* input Form  พนักงานขาย*/}
+                            <Select />
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            เรทรถ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ดอกเบี้ย :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ดอกเบี้ยรวม :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ผ่อนรวมดอกเบี้ย :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            name='late'
+                            id='late'
+                        >
+                            {/* input Form  เรทรถ*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='interest'
+                            id='interest'
+                        >
+                            {/* input Form  ดอกเบี้ย*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='sum_interest'
+                            id='sum_interest'
+                        >
+                            {/* input Form  ดอกเบี้ยรวม*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='interest_sum'
+                            id='interest_sum'
+                        >
+                            {/* input Form  ผ่อนดอกเบี้ยรวม*/}
+                            <Select />
+                        </Form.Item>
+                    </Col>
+                </Row>
+                <div style={{ marginBottom: '10px', textAlign: 'left' }}>
+                    <b>รายละเอียดไฟแนนซ์เดิม</b>
+                </div>
+                <Row
+                    align='left'
+                    justify='left'
+                    gutter={32}
+                >
+
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item style={styletext}>
+                            ยอดที่ต้องการ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ค้างกี่งวด :
+                        </Form.Item>
+
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            style={{ display: 'inline-block', }}
+                            name='desired_balance'
+                            id='desired_balance'
+                        >
+                            {/* input Form  ยอดที่ต้องการ*/}
+                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
+                        </Form.Item>
+                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
+                            บาท
+                        </span>
+                        <Form.Item
+                            style={{ display: 'inline-block', }}
+                            name='many_installments'
+                            id='many_installments'
+                        >
+                            {/* input Form  ค้างกี่งวด*/}
+                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
+                        </Form.Item>
+                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
+                            บาท
+                        </span>
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            กี่งวด :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ค่างวด :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            style={{ display: 'inline-block', }}
+                            name='number_installments'
+                            id='number_installments'
+                        >
+                            {/* input Form  กี่งวด*/}
+                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
+                        </Form.Item>
+                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
+                            งวด
+                        </span>
+                        <Form.Item
+                            style={{ display: 'inline-block', }}
+                            name='installments'
+                            id='installments'
+                        >
+                            {/* input Form  ค่างวด*/}
+                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
+                        </Form.Item>
+                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
+                            บาท
+                        </span>
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            ยอดปิดไฟแนนซ์ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            ยอดคงเหลือ :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            style={{ display: 'inline-block', }}
+                            name='finance_closeing'
+                            id='finance_closeing'
+                        >
+                            {/* input Form  ยอดปิดไฟแนนซ์*/}
+                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
+                        </Form.Item>
+                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
+                            บาท
+                        </span>
+                        <Form.Item
+                            style={{ display: 'inline-block', }}
+                            name='balance'
+                            id='balance'
+                        >
+                            {/* input Form  ยอดคงเหลือ*/}
+                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
+                        </Form.Item>
+                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
+                            บาท
+                        </span>
+                    </Col>
+                </Row>
+                <div style={{ marginBottom: '10px', textAlign: 'left' }}>
+                    <b>รายละเอียดรถ</b>
+                </div>
+                <Row
+                    align='left'
+                    justify='left'
+                    gutter={32}
+                >
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item style={styletext}>
+                            ยี่ห้อ :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            เลขตัวถัง :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            กลุ่มสินค้า :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            name='brand'
+                            id='brand'
+                        >
+                            {/* input Form  ยี่ห้อ*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='classic_number'
+                            id='classic_number'
+                        >
+                            {/* input Form  เลขตัวถัง*/}
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            name='product_group'
+                            id='product_group'
+                        >
+                            {/* input Form  กลุ่มสินค้า*/}
+                            <Select />
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            รุ่นสินค้า :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            เลขเครื่อง :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            รุ่นปี :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            name='model_product'
+                            id='model_product'
+                        >
+                            {/* input Form  รุ่นสินค้า*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='key_number'
+                            id='key_number'
+                        >
+                            {/* input Form  เลขเครื่อง*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='model_year'
+                            id='model_year'
+                        >
+                            {/* input Form  รุ่นปี*/}
+                            <Select />
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={3}>
+                        <Form.Item style={styletext}>
+                            สี :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            เลขทะเบียน :
+                        </Form.Item>
+                        <Form.Item style={styletext}>
+                            จังหวัด :
+                        </Form.Item>
+                    </Col>
+                    <Col className='gutter-row' span={4}>
+                        <Form.Item
+                            name='color'
+                            id='color'
+                        >
+                            {/* input Form  สี*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='registration_number'
+                            id='registration_number'
+                        >
+                            {/* input Form  เลขทะเบียน*/}
+                            <Select />
+                        </Form.Item>
+                        <Form.Item
+                            name='province'
+                            id='province'
+                        >
+                            {/* input Form  จังหวัด*/}
+                            <Select
+                                showSearch
+                                placeholder="Select a province"
+                                optionFilterProp="children"
+                                onChange={onChange}
+                                onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                }
+                            >
+                                {province.map((item) => (
+                                    <Option key={item.province}>
+                                        {item.value}
+                                    </Option>
+                                ))}
+                            </Select>
+                        </Form.Item>
+                    </Col>
+                </Row>
             </Form>
-        </div>
+        </>
     )
 }
 

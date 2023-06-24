@@ -34,10 +34,6 @@ function Drescription() {
         setPreviewOpen(true);
         setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/')));
     };
-    const style = {
-        // marginTop: '5px',
-        // width: '245px',
-    };
     const styletext = {
         textAlign: 'right'
     };
