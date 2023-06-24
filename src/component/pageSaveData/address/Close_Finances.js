@@ -68,7 +68,7 @@ function CloseFinances() {
                             <Select />
                         </Form.Item>
                     </Col>
-                    <Col className='gutter-row' span={3}>
+                    <Col className='gutter-row' span={4}>
                         <Form.Item style={styletext}>
                             ยอดที่ต้องการจัด :
                         </Form.Item>
@@ -79,7 +79,7 @@ function CloseFinances() {
                             พนักงานขาย :
                         </Form.Item>
                     </Col>
-                    <Col className='gutter-row' span={4}>
+                    <Col className='gutter-row' span={3}>
                         <Form.Item
                             name='top_notch'
                             id='top_notch'
@@ -102,7 +102,7 @@ function CloseFinances() {
                             <Select />
                         </Form.Item>
                     </Col>
-                    <Col className='gutter-row' span={3}>
+                    <Col className='gutter-row' span={4}>
                         <Form.Item style={styletext}>
                             เรทรถ :
                         </Form.Item>
@@ -116,7 +116,7 @@ function CloseFinances() {
                             ผ่อนรวมดอกเบี้ย :
                         </Form.Item>
                     </Col>
-                    <Col className='gutter-row' span={4}>
+                    <Col className='gutter-row' span={3}>
                         <Form.Item
                             name='late'
                             id='late'
@@ -166,30 +166,41 @@ function CloseFinances() {
 
                     </Col>
                     <Col className='gutter-row' span={4}>
-                        <Form.Item
-                            style={{ display: 'inline-block', }}
-                            name='desired_balance'
-                            id='desired_balance'
+                        <Row
+                            align='left'
+                            justify='left'
+                            gutter={32}
                         >
-                            {/* input Form  ยอดที่ต้องการ*/}
-                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
-                        </Form.Item>
-                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
-                            บาท
-                        </span>
-                        <Form.Item
-                            style={{ display: 'inline-block', }}
-                            name='many_installments'
-                            id='many_installments'
-                        >
-                            {/* input Form  ค้างกี่งวด*/}
-                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
-                        </Form.Item>
-                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
-                            บาท
-                        </span>
+                            <Col className='gutter-row' span={19}>
+                                <Form.Item
+                                    style={{ display: 'inline-block', }}
+                                    name='desired_balance'
+                                    id='desired_balance'
+                                >
+                                    {/* input Form  ยอดที่ต้องการ*/}
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item
+                                    style={{ display: 'inline-block', }}
+                                    name='many_installments'
+                                    id='many_installments'
+                                >
+                                    {/* input Form  ค้างกี่งวด*/}
+                                    <Input />
+                                </Form.Item>
+                            </Col>
+                            <Col className='gutter-row' span={5}>
+                                <Form.Item>
+                                    บาท
+                                </Form.Item>
+                                <Form.Item>
+                                    บาท
+                                </Form.Item>
+                            </Col>
+                        </Row>
                     </Col>
-                    <Col className='gutter-row' span={3}>
+                    <Col className='gutter-row' span={2}>
+
                         <Form.Item style={styletext}>
                             กี่งวด :
                         </Form.Item>
@@ -198,30 +209,40 @@ function CloseFinances() {
                         </Form.Item>
                     </Col>
                     <Col className='gutter-row' span={4}>
-                        <Form.Item
-                            style={{ display: 'inline-block', }}
-                            name='number_installments'
-                            id='number_installments'
+                        <Row
+                            align='left'
+                            justify='left'
+                            gutter={32}
                         >
-                            {/* input Form  กี่งวด*/}
-                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
-                        </Form.Item>
-                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
-                            งวด
-                        </span>
-                        <Form.Item
-                            style={{ display: 'inline-block', }}
-                            name='installments'
-                            id='installments'
-                        >
-                            {/* input Form  ค่างวด*/}
-                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
-                        </Form.Item>
-                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
-                            บาท
-                        </span>
+                            <Col className='gutter-row' span={19}>
+                                <Form.Item
+                                    style={{ display: 'inline-block', }}
+                                    name='number_installments'
+                                    id='number_installments'
+                                >
+                                    {/* input Form  กี่งวด*/}
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item
+                                    style={{ display: 'inline-block', }}
+                                    name='installments'
+                                    id='installments'
+                                >
+                                    {/* input Form  ค้างกี่งวด*/}
+                                    <Input />
+                                </Form.Item>
+                            </Col>
+                            <Col className='gutter-row' span={5}>
+                                <Form.Item>
+                                    งวด
+                                </Form.Item>
+                                <Form.Item>
+                                    บาท
+                                </Form.Item>
+                            </Col>
+                        </Row>
                     </Col>
-                    <Col className='gutter-row' span={3}>
+                    <Col className='gutter-row' span={4}>
                         <Form.Item style={styletext}>
                             ยอดปิดไฟแนนซ์ :
                         </Form.Item>
@@ -229,29 +250,39 @@ function CloseFinances() {
                             ยอดคงเหลือ :
                         </Form.Item>
                     </Col>
-                    <Col className='gutter-row' span={4}>
-                        <Form.Item
-                            style={{ display: 'inline-block', }}
-                            name='finance_closeing'
-                            id='finance_closeing'
+                    <Col className='gutter-row' span={5}>
+                        <Row
+                            align='left'
+                            justify='left'
+                            gutter={32}
                         >
-                            {/* input Form  ยอดปิดไฟแนนซ์*/}
-                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
-                        </Form.Item>
-                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
-                            บาท
-                        </span>
-                        <Form.Item
-                            style={{ display: 'inline-block', }}
-                            name='balance'
-                            id='balance'
-                        >
-                            {/* input Form  ยอดคงเหลือ*/}
-                            <Input className='gutter-row' style={{ width: 'calc(130px)' }} />
-                        </Form.Item>
-                        <span style={{ display: 'inline-block', lineHeight: '32px', marginLeft: '15px' }}>
-                            บาท
-                        </span>
+                            <Col className='gutter-row' span={19}>
+                                <Form.Item
+                                    style={{ display: 'inline-block', }}
+                                    name='finance_closeing'
+                                    id='finance_closeing'
+                                >
+                                    {/* input Form  กี่งวด*/}
+                                    <Input />
+                                </Form.Item>
+                                <Form.Item
+                                    style={{ display: 'inline-block', }}
+                                    name='balance'
+                                    id='balance'
+                                >
+                                    {/* input Form  ค้างกี่งวด*/}
+                                    <Input />
+                                </Form.Item>
+                            </Col>
+                            <Col className='gutter-row' span={4}>
+                                <Form.Item>
+                                    งวด
+                                </Form.Item>
+                                <Form.Item>
+                                    บาท
+                                </Form.Item>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
                 <div style={{ marginBottom: '10px', textAlign: 'left' }}>
